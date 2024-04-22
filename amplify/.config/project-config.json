@@ -1,0 +1,16 @@
+{
+  "projectName": "amplifytemplate",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "Next.js - SSG",
+    "config": {
+      "SourceDir": "./src/",
+      "DistributionDir": "./out/",
+      "BuildCommand": "yarn build"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+}

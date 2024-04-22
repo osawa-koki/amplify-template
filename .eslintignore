@@ -2,3 +2,4 @@
 /out/
 /playwright-report/
 /playwright.config.ts
+/src/*.js
