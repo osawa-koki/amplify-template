@@ -8,14 +8,6 @@
     }
   },
   "parameters": {
-    "AMPLIFY_function_amplifytemplatefe992890PreSignup_DOMAINALLOWLIST": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "amplifytemplatefe992890PreSignup"
-        }
-      ]
-    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
