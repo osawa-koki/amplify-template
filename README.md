@@ -2,25 +2,47 @@
 
 🏺🏺🏺 Amplify Frameworkを使用したサーバーレスアプリケーションのテンプレートです！  
 
-## 実行方法
+## 準備方法
 
 ```shell
-# モジュールのインストール
+# `Amplify CLI`をインストール
+yarn global add @aws-amplify/cli
+
+# Amplifyの認証
+amplify configure
+
+# プロジェクトの初期化
+amplify init
+
+# プロジェクトにホスティング機能を追加
+amplify add hosting
+
+# プロジェクトに認証機能を追加  
+amplify add auth
+
+# プロジェクトをプッシュ
+amplify push
+
+# プロジェクトを公開
+amplify publish
+
+# -----
+
+# モジュールをインストール
 yarn install
 
-# 開発用実行
+# ローカルサーバーを起動
 yarn dev
-
-# ビルド
-yarn build
 ```
 
-Dockerを使用する場合は以下のコマンドを実行してください。  
+## デプロイ
 
-```shell
-# Dockerイメージのビルド
-docker build -t nextjs-template .
+`v-*`という形式のタグをつけると、GitHub Actionsで自動的にデプロイされます。  
+GitHub Actionsのシークレット情報として以下の情報を設定してください。  
 
-# Dockerコンテナの実行
-docker run --rm -d -p 80:80 --name nextjs-template nextjs-template
-```
+| シークレット名 | 説明 |
+| --- | --- |
+| AWS_ACCESS_KEY_ID | AWSのアクセスキー |
+| AWS_SECRET_ACCESS_KEY | AWSのシークレットアクセスキー |
+| AWS_REGION | AWSのリージョン |
+| TEAM_PROVIDER_INFO_JSON | Amplifyのチームプロバイダー情報(`./amplify/team-provider-info.json`の内容) |
