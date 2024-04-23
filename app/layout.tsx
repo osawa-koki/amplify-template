@@ -49,16 +49,16 @@ export default function RootLayout ({
         <div id="Wrapper">
           <Authenticator.Provider>
             <Authenticator signUpAttributes={['email', 'name']}>
-              {({ signOut }) => (
+              {() => (
                 <>
                   <main>
                     {children}
                   </main>
-                  <Menu currentPage={currentPage} signOut={signOut} />
-                  <ToastContainer />
                 </>
               )}
             </Authenticator>
+            <Menu currentPage={currentPage} />
+            <ToastContainer />
           </Authenticator.Provider>
         </div>
         <footer>
