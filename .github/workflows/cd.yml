@@ -24,7 +24,7 @@ jobs:
         run: yarn global add @aws-amplify/cli
       - name: Restore cache
         id: yarn-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ./node_modules/
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
