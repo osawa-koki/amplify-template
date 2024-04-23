@@ -46,18 +46,20 @@ export default function RootLayout ({
         )}
       </head>
       <body>
-      <Authenticator>
-      {({ signOut, user }) => (
-        <main>
-          <h1>Hello {user.username}</h1>
-          <button onClick={signOut}>Sign out</button>
-        </main>
-      )}
-    </Authenticator>
         <div id="Wrapper">
-          <main>{children}</main>
-          <Menu currentPage={currentPage} />
-          <ToastContainer />
+          <Authenticator.Provider>
+            <Authenticator signUpAttributes={['email', 'name']}>
+              {({ signOut }) => (
+                <>
+                  <main>
+                    {children}
+                  </main>
+                  <Menu currentPage={currentPage} signOut={signOut} />
+                  <ToastContainer />
+                </>
+              )}
+            </Authenticator>
+          </Authenticator.Provider>
         </div>
         <footer>
           <a
