@@ -34,7 +34,7 @@ jobs:
       - name: Create `team-provider-info.json`
         run: echo $'${{ secrets.TEAM_PROVIDER_INFO_JSON }}' > ./amplify/team-provider-info.json
       - name: Setup Amplify
-        run: amplify pull --appId ${{ secrets.AMPLIFY_APP_ID }} --envName prod --yes
+        run: amplify pull --appId $(cat ./amplify/team-provider-info.json | jq -r .prod.awscloudformation.AmplifyAppId) --envName prod --yes
       - name: Amplify checkout
         run: amplify env checkout prod
       - name: Push
