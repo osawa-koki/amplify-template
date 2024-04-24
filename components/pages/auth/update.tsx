@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { updateUserAttributes, type FetchUserAttributesOutput } from 'aws-amplify/auth'
+import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
 import { Badge, Button, Form, Table } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
