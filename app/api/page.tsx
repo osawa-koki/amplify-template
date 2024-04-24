@@ -147,8 +147,7 @@ export default function Todos (): React.JSX.Element {
               <Form.Control as='textarea' placeholder='Enter description' value={description} onChange={(event) => { setDescription(event.target.value) }} />
             </td>
             <td>
-              {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-              <Button variant='primary' onClick={createFn} disabled={createButtonDisabled || isLoading}>
+              <Button variant='primary' onClick={() => { void createFn() }} disabled={createButtonDisabled || isLoading}>
                 Create
               </Button>
             </td>
