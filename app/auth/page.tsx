@@ -1,10 +1,11 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Alert, Badge, Button, Table } from 'react-bootstrap'
+import { Alert, Button } from 'react-bootstrap'
 
 import { useAuthenticator } from '@aws-amplify/ui-react'
 import { type FetchUserAttributesOutput, fetchUserAttributes } from 'aws-amplify/auth'
+import ShowComponent from '../../components/pages/auth/show'
 
 export default function App (): React.JSX.Element {
   const { user, signOut } = useAuthenticator((context) => [context.user])
@@ -29,49 +30,11 @@ export default function App (): React.JSX.Element {
     )
   }
 
-  if (attributes == null) {
-    return (
-      <Alert variant='warning'>
-        Fetching user attributes...
-      </Alert>
-    )
-  }
-
   return (
     <>
-      <Table bordered>
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Sub</td>
-            <td>{attributes.sub}</td>
-          </tr>
-          <tr>
-            <td>Email</td>
-            <td>
-              {attributes.email}
-              {attributes.email_verified === 'true'
-                ? (
-                <Badge bg='primary' className='ms-3'>Verified</Badge>
-                  )
-                : (
-                <Badge bg='warning' className='ms-3'>Not Verified</Badge>
-                  )}
-            </td>
-          </tr>
-          <tr>
-            <td>Name</td>
-            <td>{attributes.name}</td>
-          </tr>
-        </tbody>
-      </Table>
+      <ShowComponent attributes={attributes} />
       <hr />
-      <Button variant='primary' onClick={signOut}>Sign Out</Button>
+      <Button variant='secondary' onClick={() => { if (window.confirm('Are you sure you want to sign out?')) signOut?.() }}>Sign Out</Button>
     </>
   )
 }
