@@ -4,9 +4,10 @@ import React, { useEffect, useState } from 'react'
 import { Alert, Button } from 'react-bootstrap'
 
 import { useAuthenticator } from '@aws-amplify/ui-react'
-import { type FetchUserAttributesOutput, fetchUserAttributes } from 'aws-amplify/auth'
+import { type FetchUserAttributesOutput, fetchUserAttributes, updateUserAttributes } from 'aws-amplify/auth'
 import ShowComponent from '../../components/pages/auth/show'
 import UpdateComponent from '../../components/pages/auth/update'
+import { toast } from 'react-toastify'
 
 export default function App (): React.JSX.Element {
   const { user, signOut } = useAuthenticator((context) => [context.user])
@@ -18,6 +19,10 @@ export default function App (): React.JSX.Element {
 
   useEffect(() => {
     if (user == null) return
+    execFetchUserAttributes()
+  }, [user])
+
+  const execFetchUserAttributes = (): void => {
     fetchUserAttributes()
       .then((result) => {
         setAttributes(result)
@@ -25,7 +30,36 @@ export default function App (): React.JSX.Element {
       .catch((error) => {
         console.error(error)
       })
-  }, [user])
+  }
+
+  const execUpdateUserAttributes = (attributes: FetchUserAttributesOutput): void => {
+    const name = attributes?.name
+    if (name == null) {
+      toast.error('Name is required')
+      return
+    }
+    const birthdate = attributes?.birthdate
+    if (birthdate == null) {
+      toast.error('Birthdate is required')
+      return
+    }
+    updateUserAttributes({
+      userAttributes: {
+        name,
+        birthdate
+      }
+    })
+      .then(() => {
+        toast.success('User attributes updated')
+      })
+      .catch((error) => {
+        console.error(error)
+        toast.error('Failed to update user attributes')
+      })
+      .finally(() => {
+        execFetchUserAttributes()
+      })
+  }
 
   if (user == null) {
     return (
@@ -38,7 +72,7 @@ export default function App (): React.JSX.Element {
   return (
     <>
       <ShowComponent attributes={attributes} />
-      <UpdateComponent modalIsOpen={updateModalIsOpen} closeModal={closeUpdateModal} initialValues={attributes} />
+      <UpdateComponent modalIsOpen={updateModalIsOpen} closeModal={closeUpdateModal} initialValues={attributes} execUpdateUserAttributes={execUpdateUserAttributes} />
       <hr />
       <div className='d-flex'>
         <Button variant='primary' className='me-2' onClick={openUpdateModal}>Update</Button>

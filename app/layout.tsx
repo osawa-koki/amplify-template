@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { ToastContainer } from 'react-toastify'
 
+import 'react-toastify/dist/ReactToastify.css'
 import '../styles/style.scss'
 import '../styles/menu.scss'
 
@@ -58,8 +59,8 @@ export default function RootLayout ({
               )}
             </Authenticator>
             <Menu currentPage={currentPage} />
-            <ToastContainer />
           </Authenticator.Provider>
+          <ToastContainer />
         </div>
         <footer>
           <a

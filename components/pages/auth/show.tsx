@@ -48,6 +48,10 @@ export default function ShowComponent (props: Props): React.JSX.Element {
             <td>Name</td>
             <td>{attributes.name}</td>
           </tr>
+          <tr>
+            <td>Birthday</td>
+            <td>{attributes.birthdate}</td>
+          </tr>
         </tbody>
       </Table>
     </>

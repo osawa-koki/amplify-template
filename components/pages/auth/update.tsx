@@ -1,21 +1,37 @@
 import React, { useEffect, useState } from 'react'
-import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
+import { updateUserAttributes, type FetchUserAttributesOutput } from 'aws-amplify/auth'
+import { Badge, Button, Form, Table } from 'react-bootstrap'
+import { toast } from 'react-toastify'
+
 import Modal from '../../Modal'
-import { Badge, Form, Table } from 'react-bootstrap'
 
 interface Props {
   modalIsOpen: boolean
   closeModal: () => void
   initialValues: FetchUserAttributesOutput | null
+  execUpdateUserAttributes: (attributes: FetchUserAttributesOutput) => void
 }
 
 export default function UpdateComponent (props: Props): React.JSX.Element {
-  const { initialValues, modalIsOpen, closeModal } = props
+  const { initialValues, modalIsOpen, closeModal, execUpdateUserAttributes } = props
   const [attributes, setAttributes] = useState<FetchUserAttributesOutput | null>(initialValues)
+
+  const [isUpdating, setIsUpdating] = useState(false)
 
   useEffect(() => {
     setAttributes(initialValues)
   }, [initialValues])
+
+  const execUpdateUserAttributesWrapper = (): void => {
+    setIsUpdating(true)
+    if (attributes == null) {
+      toast.error('Attributes is null')
+      setIsUpdating(false)
+      return
+    }
+    execUpdateUserAttributes(attributes)
+    setIsUpdating(false)
+  }
 
   return (
     <>
@@ -90,6 +106,8 @@ export default function UpdateComponent (props: Props): React.JSX.Element {
             </tr>
           </tbody>
         </Table>
+        <hr />
+        <Button variant='primary' onClick={execUpdateUserAttributesWrapper} disabled={isUpdating}>Update</Button>
       </Modal>
     </>
   )
