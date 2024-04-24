@@ -1,6 +1,9 @@
+'use client'
+
 import React from 'react'
-import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
 import { Alert, Badge, Table } from 'react-bootstrap'
+
+import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
 
 interface Props {
   attributes: FetchUserAttributesOutput | null

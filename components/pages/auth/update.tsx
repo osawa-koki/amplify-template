@@ -1,7 +1,10 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
-import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
 import { Badge, Button, Form, Table } from 'react-bootstrap'
 import { toast } from 'react-toastify'
+
+import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
 
 import Modal from '../../Modal'
 

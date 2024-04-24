@@ -2,12 +2,13 @@
 
 import React, { useEffect, useState } from 'react'
 import { Alert, Button } from 'react-bootstrap'
+import { toast } from 'react-toastify'
 
 import { useAuthenticator } from '@aws-amplify/ui-react'
 import { type FetchUserAttributesOutput, fetchUserAttributes, updateUserAttributes } from 'aws-amplify/auth'
+
 import ShowComponent from '../../components/pages/auth/show'
 import UpdateComponent from '../../components/pages/auth/update'
-import { toast } from 'react-toastify'
 
 export default function App (): React.JSX.Element {
   const { user, signOut } = useAuthenticator((context) => [context.user])
