@@ -16,11 +16,10 @@ import { createTodo, deleteTodo } from '../../src/graphql/mutations'
 export default function Todos (): React.JSX.Element {
   const [todos, setTodos] = useState<Todo[] | null | Error>(null)
 
-  const load = (): void => {
+  const fetchFn = (): void => {
     setIsLoading(true)
     graphqlClient.graphql({ query: listTodos, authMode: 'userPool' })
       .then((result) => {
-        console.log('result:', result)
         setTodos(result.data.listTodos.items.sort((a, b) => {
           if (a.createdAt == null || b.createdAt == null) return 0
           if (a.createdAt < b.createdAt) return -1
@@ -30,6 +29,7 @@ export default function Todos (): React.JSX.Element {
       })
       .catch((err) => {
         console.error(err)
+        toast.error('Failed to load todos')
         setTodos(err)
       })
       .finally(() => {
@@ -58,9 +58,10 @@ export default function Todos (): React.JSX.Element {
         variables: { input: data },
         authMode: 'userPool'
       })
+      toast.success('Todo created')
       setName('')
       setDescription('')
-      load()
+      fetchFn()
     } catch (err) {
       console.error('error creating todo:', err)
       toast.error('Failed to create todo')
@@ -79,7 +80,8 @@ export default function Todos (): React.JSX.Element {
         variables: { input: { id } },
         authMode: 'userPool'
       })
-      load()
+      toast.success('Todo deleted')
+      fetchFn()
     } catch (err) {
       console.error('error deleting todo:', err)
       toast.error('Failed to delete todo')
@@ -89,7 +91,7 @@ export default function Todos (): React.JSX.Element {
   }
 
   useEffect(() => {
-    load()
+    fetchFn()
   }, [])
 
   if (todos == null) {
@@ -116,7 +118,7 @@ export default function Todos (): React.JSX.Element {
     <>
       <h1>Todo List</h1>
       <div>
-        <IoReload onClick={load} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
+        <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       </div>
       <Table>
         <thead>
