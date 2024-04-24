@@ -5,7 +5,7 @@ import { Alert, Button } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 import { useAuthenticator } from '@aws-amplify/ui-react'
-import { type FetchUserAttributesOutput, fetchUserAttributes, updateUserAttributes } from 'aws-amplify/auth'
+import { type FetchUserAttributesOutput, fetchUserAttributes, updateUserAttributes, deleteUser } from 'aws-amplify/auth'
 
 import ShowComponent from '../../components/pages/auth/show'
 import UpdateComponent from '../../components/pages/auth/update'
@@ -78,6 +78,7 @@ export default function App (): React.JSX.Element {
       <div className='d-flex'>
         <Button variant='primary' className='me-2' onClick={openUpdateModal}>Update</Button>
         <Button variant='secondary' className='me-2' onClick={() => { if (window.confirm('Are you sure you want to sign out?')) signOut?.() }}>Sign Out</Button>
+        <Button variant='danger' onClick={() => { if (window.confirm('Are you sure you want to delete your account?')) void deleteUser?.() }}>Delete Account</Button>
       </div>
     </>
   )
