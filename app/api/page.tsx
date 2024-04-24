@@ -5,13 +5,13 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { Alert, Button, Form, Spinner, Table } from 'react-bootstrap'
 import { IoReload } from 'react-icons/io5'
 import { FaTrashAlt } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 
 import { listTodos } from '../../src/graphql/queries'
 
 import { graphqlClient } from '../layout'
 import { type Todo } from '../../src/API'
 import { createTodo, deleteTodo } from '../../src/graphql/mutations'
-import { toast } from 'react-toastify'
 
 export default function Todos (): React.JSX.Element {
   const [todos, setTodos] = useState<Todo[] | null | Error>(null)
