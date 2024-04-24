@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { Button } from 'react-bootstrap'
 import { BsGearFill } from 'react-icons/bs'
 
+import { useAuthenticator } from '@aws-amplify/ui-react'
+
 import pages from '../pages'
 
 interface Props {
@@ -15,26 +17,40 @@ interface Props {
 function Menu (props: Props): React.JSX.Element {
   const { currentPage } = props
 
+  const { user, signOut } = useAuthenticator((context) => [context.user])
+
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
   return (
     <>
       <div id='Menu' className={menuOpen ? 'on' : ''}>
-        {pages.map((page, index: number) => {
-          return (
-            <Link
-              key={index}
-              href={page.path}
-              className={`btn ${
-                currentPage === page.path
-                  ? 'btn-primary active'
-                  : ''
-              }`}
+        <>
+          {pages.map((page, index: number) => {
+            return (
+              <Link
+                key={index}
+                href={page.path}
+                className={`btn ${
+                  currentPage === page.path
+                    ? 'btn-primary active'
+                    : ''
+                }`}
+              >
+                {page.emoji}&nbsp;{page.name}
+              </Link>
+            )
+          })}
+          {user != null && (
+            <Button
+              onClick={() => {
+                if (window.confirm('Are you sure you want to sign out?')) signOut?.()
+              }}
+              className='btn btn-secondary mt-5'
             >
-              {page.emoji}&nbsp;{page.name}
-            </Link>
-          )
-        })}
+              Sign Out
+            </Button>
+          )}
+        </>
       </div>
       <div id='ToMenu'>
         <Button

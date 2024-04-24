@@ -23,13 +23,16 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^6.1.8",
     "@types/node": "^20.12.7",
+    "aws-amplify": "^6.0.29",
     "bootstrap": "^5.3.3",
     "next": "^14.2.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
     "react-icons": "^5.1.0",
+    "react-modal": "^3.16.1",
     "react-toastify": "^10.0.5",
     "sass": "^1.75.0",
     "typescript": "^5.4.5"
@@ -41,6 +44,7 @@
     "@types/react": "^18.2.79",
     "@types/react-bootstrap": "^0.32.36",
     "@types/react-dom": "^18.2.25",
+    "@types/react-modal": "^3.16.3",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "eslint": "^8.57.0",
     "eslint-config-standard-with-typescript": "^37.0.0",

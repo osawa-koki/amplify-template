@@ -31,8 +31,6 @@ jobs:
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --frozen-lockfile --non-interactive --production
-      - name: Create `team-provider-info.json`
-        run: echo $'${{ secrets.TEAM_PROVIDER_INFO_JSON }}' > ./amplify/team-provider-info.json
       - name: Setup Amplify
         run: amplify pull --appId $(cat ./amplify/team-provider-info.json | jq -r .prod.awscloudformation.AmplifyAppId) --envName prod --yes
       - name: Amplify checkout
