@@ -114,7 +114,7 @@ export default function Todos (): React.JSX.Element {
 
   return (
     <>
-      <h1>Todo List (Private)</h1>
+      <h1>Todo List</h1>
       <div>
         <IoReload onClick={load} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       </div>
