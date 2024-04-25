@@ -13,9 +13,10 @@ import { graphqlClient } from '@/app/layout'
 
 import ChatRoomIndexComponent from './indexTable'
 import ChatRoomCreateComponent from './create'
+import { type ShallowChatRoom } from './@types/ShallowChatRoom'
 
 export default function ChatRoomComponent (): React.JSX.Element {
-  const [chatRooms, setChatRooms] = useState<ChatRoom[] | null | Error>(null)
+  const [chatRooms, setChatRooms] = useState<ShallowChatRoom[] | null | Error>(null)
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -28,7 +29,7 @@ export default function ChatRoomComponent (): React.JSX.Element {
           if (a.createdAt < b.createdAt) return -1
           if (a.createdAt > b.createdAt) return 1
           return 0
-        })
+        }) as ChatRoom[]
         setChatRooms(rooms)
       })
       .catch((err) => {
