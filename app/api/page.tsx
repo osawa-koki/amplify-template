@@ -7,9 +7,10 @@ import { Alert, Form } from 'react-bootstrap'
 
 import TodoComponent from './todo/todo'
 import DreamComponent from './dream/dream'
+import ChatRoomComponent from './chat/chat'
 
-type SelectedComponent = '' | 'Todo' | 'Dream'
-const allowedSelectedComponents: SelectedComponent[] = ['', 'Todo', 'Dream']
+type SelectedComponent = '' | 'Todo' | 'Dream' | 'Chat'
+const allowedSelectedComponents: SelectedComponent[] = ['', 'Todo', 'Dream', 'Chat']
 
 export default function Todos (): React.JSX.Element {
   // https://nextjs.org/docs/app/api-reference/functions/use-search-params
@@ -67,6 +68,7 @@ export default function Todos (): React.JSX.Element {
       )}
       {selectedComponent === 'Todo' && <TodoComponent />}
       {selectedComponent === 'Dream' && <DreamComponent />}
+      {selectedComponent === 'Chat' && <ChatRoomComponent />}
     </>
   )
 }
