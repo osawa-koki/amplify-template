@@ -3,7 +3,7 @@
 import React from 'react'
 import { useSearchParams } from 'next/navigation'
 
-import TodoShowComponent from '@/components/pages/api/todo/show'
+import TodoShowComponent from '@/app/api/todo/show'
 
 export default function TodoShow (): React.JSX.Element {
   const searchParams = useSearchParams()

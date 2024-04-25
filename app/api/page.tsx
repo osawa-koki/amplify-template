@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react'
 
-import TodoComponent from '@/components/pages/api/todo'
 import { Alert, Form } from 'react-bootstrap'
+
+import TodoComponent from './todo'
 
 type SelectedComponent = '' | 'Todo'
 

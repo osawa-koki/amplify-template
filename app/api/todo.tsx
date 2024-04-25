@@ -6,9 +6,11 @@ import { Alert } from 'react-bootstrap'
 import { IoReload } from 'react-icons/io5'
 import { toast } from 'react-toastify'
 
-import { graphqlClient } from '@/app/layout'
 import { type Todo } from '@/src/API'
 import { listTodos } from '@/src/graphql/queries'
+
+import { graphqlClient } from '@/app/layout'
+
 import TodoIndexComponent from './todo/indexTable'
 import TodoCreateComponent from './todo/create'
 
