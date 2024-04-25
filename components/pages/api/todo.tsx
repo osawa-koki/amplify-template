@@ -7,10 +7,9 @@ import { IoReload } from 'react-icons/io5'
 import { FaTrashAlt } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-import { listTodos } from '@/src/graphql/queries'
-
 import { graphqlClient } from '@/app/layout'
 import { type Todo } from '@/src/API'
+import { listTodos } from '@/src/graphql/queries'
 import { createTodo, deleteTodo } from '@/src/graphql/mutations'
 
 export default function TodoComponent (): React.JSX.Element {
