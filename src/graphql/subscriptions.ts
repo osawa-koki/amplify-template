@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -120,4 +121,145 @@ export const onDeleteDream = /* GraphQL */ `subscription OnDeleteDream(
 ` as GeneratedSubscription<
   APITypes.OnDeleteDreamSubscriptionVariables,
   APITypes.OnDeleteDreamSubscription
+>;
+export const onCreateChatRoom = /* GraphQL */ `subscription OnCreateChatRoom(
+  $filter: ModelSubscriptionChatRoomFilterInput
+  $owner: String
+) {
+  onCreateChatRoom(filter: $filter, owner: $owner) {
+    id
+    name
+    messages {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateChatRoomSubscriptionVariables,
+  APITypes.OnCreateChatRoomSubscription
+>;
+export const onUpdateChatRoom = /* GraphQL */ `subscription OnUpdateChatRoom(
+  $filter: ModelSubscriptionChatRoomFilterInput
+  $owner: String
+) {
+  onUpdateChatRoom(filter: $filter, owner: $owner) {
+    id
+    name
+    messages {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateChatRoomSubscriptionVariables,
+  APITypes.OnUpdateChatRoomSubscription
+>;
+export const onDeleteChatRoom = /* GraphQL */ `subscription OnDeleteChatRoom(
+  $filter: ModelSubscriptionChatRoomFilterInput
+  $owner: String
+) {
+  onDeleteChatRoom(filter: $filter, owner: $owner) {
+    id
+    name
+    messages {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteChatRoomSubscriptionVariables,
+  APITypes.OnDeleteChatRoomSubscription
+>;
+export const onCreateMessage = /* GraphQL */ `subscription OnCreateMessage(
+  $filter: ModelSubscriptionMessageFilterInput
+  $owner: String
+) {
+  onCreateMessage(filter: $filter, owner: $owner) {
+    id
+    content
+    chatRoom {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+    createdAt
+    updatedAt
+    chatRoomMessagesId
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateMessageSubscriptionVariables,
+  APITypes.OnCreateMessageSubscription
+>;
+export const onUpdateMessage = /* GraphQL */ `subscription OnUpdateMessage(
+  $filter: ModelSubscriptionMessageFilterInput
+  $owner: String
+) {
+  onUpdateMessage(filter: $filter, owner: $owner) {
+    id
+    content
+    chatRoom {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+    createdAt
+    updatedAt
+    chatRoomMessagesId
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateMessageSubscriptionVariables,
+  APITypes.OnUpdateMessageSubscription
+>;
+export const onDeleteMessage = /* GraphQL */ `subscription OnDeleteMessage(
+  $filter: ModelSubscriptionMessageFilterInput
+  $owner: String
+) {
+  onDeleteMessage(filter: $filter, owner: $owner) {
+    id
+    content
+    chatRoom {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+    createdAt
+    updatedAt
+    chatRoomMessagesId
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteMessageSubscriptionVariables,
+  APITypes.OnDeleteMessageSubscription
 >;

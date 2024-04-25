@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -77,4 +78,90 @@ export const listDreams = /* GraphQL */ `query ListDreams(
 ` as GeneratedQuery<
   APITypes.ListDreamsQueryVariables,
   APITypes.ListDreamsQuery
+>;
+export const getChatRoom = /* GraphQL */ `query GetChatRoom($id: ID!) {
+  getChatRoom(id: $id) {
+    id
+    name
+    messages {
+      nextToken
+      __typename
+    }
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetChatRoomQueryVariables,
+  APITypes.GetChatRoomQuery
+>;
+export const listChatRooms = /* GraphQL */ `query ListChatRooms(
+  $filter: ModelChatRoomFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listChatRooms(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListChatRoomsQueryVariables,
+  APITypes.ListChatRoomsQuery
+>;
+export const getMessage = /* GraphQL */ `query GetMessage($id: ID!) {
+  getMessage(id: $id) {
+    id
+    content
+    chatRoom {
+      id
+      name
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+    createdAt
+    updatedAt
+    chatRoomMessagesId
+    owner
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.GetMessageQueryVariables,
+  APITypes.GetMessageQuery
+>;
+export const listMessages = /* GraphQL */ `query ListMessages(
+  $filter: ModelMessageFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      content
+      createdAt
+      updatedAt
+      chatRoomMessagesId
+      owner
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListMessagesQueryVariables,
+  APITypes.ListMessagesQuery
 >;

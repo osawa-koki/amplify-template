@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
@@ -124,13 +125,66 @@ export type DeleteDreamInput = {
   id: string,
 };
 
-export type ModelTodoFilterInput = {
-  id?: ModelIDInput | null,
+export type CreateChatRoomInput = {
+  id?: string | null,
+  name: string,
+};
+
+export type ModelChatRoomConditionInput = {
   name?: ModelStringInput | null,
-  description?: ModelStringInput | null,
-  and?: Array< ModelTodoFilterInput | null > | null,
-  or?: Array< ModelTodoFilterInput | null > | null,
-  not?: ModelTodoFilterInput | null,
+  and?: Array< ModelChatRoomConditionInput | null > | null,
+  or?: Array< ModelChatRoomConditionInput | null > | null,
+  not?: ModelChatRoomConditionInput | null,
+};
+
+export type ChatRoom = {
+  __typename: "ChatRoom",
+  id: string,
+  name: string,
+  messages?: ModelMessageConnection | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
+};
+
+export type ModelMessageConnection = {
+  __typename: "ModelMessageConnection",
+  items:  Array<Message | null >,
+  nextToken?: string | null,
+};
+
+export type Message = {
+  __typename: "Message",
+  id: string,
+  content: string,
+  chatRoom?: ChatRoom | null,
+  createdAt: string,
+  updatedAt: string,
+  chatRoomMessagesId?: string | null,
+  owner?: string | null,
+};
+
+export type UpdateChatRoomInput = {
+  id: string,
+  name?: string | null,
+};
+
+export type DeleteChatRoomInput = {
+  id: string,
+};
+
+export type CreateMessageInput = {
+  id?: string | null,
+  content: string,
+  chatRoomMessagesId?: string | null,
+};
+
+export type ModelMessageConditionInput = {
+  content?: ModelStringInput | null,
+  and?: Array< ModelMessageConditionInput | null > | null,
+  or?: Array< ModelMessageConditionInput | null > | null,
+  not?: ModelMessageConditionInput | null,
+  chatRoomMessagesId?: ModelIDInput | null,
 };
 
 export type ModelIDInput = {
@@ -147,6 +201,25 @@ export type ModelIDInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
   size?: ModelSizeInput | null,
+};
+
+export type UpdateMessageInput = {
+  id: string,
+  content?: string | null,
+  chatRoomMessagesId?: string | null,
+};
+
+export type DeleteMessageInput = {
+  id: string,
+};
+
+export type ModelTodoFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  and?: Array< ModelTodoFilterInput | null > | null,
+  or?: Array< ModelTodoFilterInput | null > | null,
+  not?: ModelTodoFilterInput | null,
 };
 
 export type ModelTodoConnection = {
@@ -170,6 +243,29 @@ export type ModelDreamConnection = {
   __typename: "ModelDreamConnection",
   items:  Array<Dream | null >,
   nextToken?: string | null,
+};
+
+export type ModelChatRoomFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  and?: Array< ModelChatRoomFilterInput | null > | null,
+  or?: Array< ModelChatRoomFilterInput | null > | null,
+  not?: ModelChatRoomFilterInput | null,
+};
+
+export type ModelChatRoomConnection = {
+  __typename: "ModelChatRoomConnection",
+  items:  Array<ChatRoom | null >,
+  nextToken?: string | null,
+};
+
+export type ModelMessageFilterInput = {
+  id?: ModelIDInput | null,
+  content?: ModelStringInput | null,
+  and?: Array< ModelMessageFilterInput | null > | null,
+  or?: Array< ModelMessageFilterInput | null > | null,
+  not?: ModelMessageFilterInput | null,
+  chatRoomMessagesId?: ModelIDInput | null,
 };
 
 export type ModelSubscriptionTodoFilterInput = {
@@ -223,6 +319,20 @@ export type ModelSubscriptionDreamFilterInput = {
 export type ModelSubscriptionBooleanInput = {
   ne?: boolean | null,
   eq?: boolean | null,
+};
+
+export type ModelSubscriptionChatRoomFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionChatRoomFilterInput | null > | null,
+  or?: Array< ModelSubscriptionChatRoomFilterInput | null > | null,
+};
+
+export type ModelSubscriptionMessageFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  content?: ModelSubscriptionStringInput | null,
+  and?: Array< ModelSubscriptionMessageFilterInput | null > | null,
+  or?: Array< ModelSubscriptionMessageFilterInput | null > | null,
 };
 
 export type CreateTodoMutationVariables = {
@@ -333,6 +443,141 @@ export type DeleteDreamMutation = {
   } | null,
 };
 
+export type CreateChatRoomMutationVariables = {
+  input: CreateChatRoomInput,
+  condition?: ModelChatRoomConditionInput | null,
+};
+
+export type CreateChatRoomMutation = {
+  createChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateChatRoomMutationVariables = {
+  input: UpdateChatRoomInput,
+  condition?: ModelChatRoomConditionInput | null,
+};
+
+export type UpdateChatRoomMutation = {
+  updateChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteChatRoomMutationVariables = {
+  input: DeleteChatRoomInput,
+  condition?: ModelChatRoomConditionInput | null,
+};
+
+export type DeleteChatRoomMutation = {
+  deleteChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type CreateMessageMutationVariables = {
+  input: CreateMessageInput,
+  condition?: ModelMessageConditionInput | null,
+};
+
+export type CreateMessageMutation = {
+  createMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateMessageMutationVariables = {
+  input: UpdateMessageInput,
+  condition?: ModelMessageConditionInput | null,
+};
+
+export type UpdateMessageMutation = {
+  updateMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteMessageMutationVariables = {
+  input: DeleteMessageInput,
+  condition?: ModelMessageConditionInput | null,
+};
+
+export type DeleteMessageMutation = {
+  deleteMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
 export type GetTodoQueryVariables = {
   id: string,
 };
@@ -407,6 +652,92 @@ export type ListDreamsQuery = {
       done?: boolean | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetChatRoomQueryVariables = {
+  id: string,
+};
+
+export type GetChatRoomQuery = {
+  getChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListChatRoomsQueryVariables = {
+  filter?: ModelChatRoomFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListChatRoomsQuery = {
+  listChatRooms?:  {
+    __typename: "ModelChatRoomConnection",
+    items:  Array< {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetMessageQueryVariables = {
+  id: string,
+};
+
+export type GetMessageQuery = {
+  getMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListMessagesQueryVariables = {
+  filter?: ModelMessageFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListMessagesQuery = {
+  listMessages?:  {
+    __typename: "ModelMessageConnection",
+    items:  Array< {
+      __typename: "Message",
+      id: string,
+      content: string,
+      createdAt: string,
+      updatedAt: string,
+      chatRoomMessagesId?: string | null,
       owner?: string | null,
     } | null >,
     nextToken?: string | null,
@@ -517,6 +848,141 @@ export type OnDeleteDreamSubscription = {
     done?: boolean | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateChatRoomSubscriptionVariables = {
+  filter?: ModelSubscriptionChatRoomFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateChatRoomSubscription = {
+  onCreateChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateChatRoomSubscriptionVariables = {
+  filter?: ModelSubscriptionChatRoomFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateChatRoomSubscription = {
+  onUpdateChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteChatRoomSubscriptionVariables = {
+  filter?: ModelSubscriptionChatRoomFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteChatRoomSubscription = {
+  onDeleteChatRoom?:  {
+    __typename: "ChatRoom",
+    id: string,
+    name: string,
+    messages?:  {
+      __typename: "ModelMessageConnection",
+      nextToken?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateMessageSubscriptionVariables = {
+  filter?: ModelSubscriptionMessageFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateMessageSubscription = {
+  onCreateMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateMessageSubscriptionVariables = {
+  filter?: ModelSubscriptionMessageFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateMessageSubscription = {
+  onUpdateMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteMessageSubscriptionVariables = {
+  filter?: ModelSubscriptionMessageFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteMessageSubscription = {
+  onDeleteMessage?:  {
+    __typename: "Message",
+    id: string,
+    content: string,
+    chatRoom?:  {
+      __typename: "ChatRoom",
+      id: string,
+      name: string,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null,
+    createdAt: string,
+    updatedAt: string,
+    chatRoomMessagesId?: string | null,
     owner?: string | null,
   } | null,
 };
