@@ -26,6 +26,12 @@
       },
       "storage": {
         "amplifytemplate": {}
+      },
+      "function": {
+        "amplifytemplatehello": {
+          "hogehoge": "foofoo",
+          "secretsPathAmplifyAppId": "dkaopbqedtjx3"
+        }
       }
     }
   },

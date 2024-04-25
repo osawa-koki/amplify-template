@@ -1,0 +1,12 @@
+{
+  "lambdaLayers": [],
+  "environmentVariableList": [
+    {
+      "cloudFormationParameterName": "hogehoge",
+      "environmentVariableName": "hogehoge"
+    }
+  ],
+  "secretNames": [
+    "piyopiyo"
+  ]
+}
