@@ -14,6 +14,11 @@ const pages: Page[] = [
     emoji: '📝',
     path: '/auth/',
     name: 'Auth'
+  },
+  {
+    emoji: '📦',
+    path: '/api/',
+    name: 'Api'
   }
 ]
 

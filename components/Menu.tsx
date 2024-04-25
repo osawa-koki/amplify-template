@@ -8,7 +8,7 @@ import { BsGearFill } from 'react-icons/bs'
 
 import { useAuthenticator } from '@aws-amplify/ui-react'
 
-import pages from '../pages'
+import pages from '@/pages'
 
 interface Props {
   currentPage: string | null

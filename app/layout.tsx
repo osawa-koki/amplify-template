@@ -6,19 +6,22 @@ import { usePathname } from 'next/navigation'
 import { ToastContainer } from 'react-toastify'
 
 import 'react-toastify/dist/ReactToastify.css'
-import '../styles/style.scss'
-import '../styles/menu.scss'
+import '@/styles/style.scss'
+import '@/styles/menu.scss'
 
-import setting from '../setting'
-import Menu from '../components/Menu'
+import setting from '@/setting'
+import Menu from '@/components/Menu'
 
 import { Amplify } from 'aws-amplify'
 
 import { Authenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
 
-import awsExports from '../src/aws-exports'
+import awsExports from '@/src/aws-exports'
+import { generateClient } from 'aws-amplify/api'
+
 Amplify.configure(awsExports)
+export const graphqlClient = generateClient()
 
 export default function RootLayout ({
   children
