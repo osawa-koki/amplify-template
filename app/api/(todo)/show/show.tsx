@@ -3,7 +3,9 @@
 import React, { useState } from 'react'
 
 import { Button, Form, Table } from 'react-bootstrap'
+import Link from 'next/link'
 import { toast } from 'react-toastify'
+import { IoIosHome } from 'react-icons/io'
 import dayjs from 'dayjs'
 
 import { type Todo } from '@/src/API'
@@ -26,7 +28,7 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
   const [tmpName, setTmpName] = useState<string | null>(null)
   const [tmpDescription, setTmpDescription] = useState<string | null>(null)
 
-  const execUpdateTodo = (key: string, value: string, reset: () => void): void => {
+  const execUpdateTodoRecord = (key: string, value: string, reset: () => void): void => {
     setIsLoading(true)
     graphqlClient.graphql({
       query: updateTodo,
@@ -53,8 +55,42 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
       })
   }
 
+  const execUpdateTodo = (): void => {
+    const newName = tmpName ?? todo.name
+    const newDescription = tmpDescription ?? todo.description
+    if (newName === todo.name && newDescription === todo.description) {
+      toast.info('No changes')
+      return
+    }
+    graphqlClient.graphql({
+      query: updateTodo,
+      variables: {
+        input: {
+          id: todo.id,
+          name: newName,
+          description: newDescription
+        }
+      },
+      authMode: 'userPool'
+    })
+      .then((result) => {
+        toast.success('Updated todo')
+        const data = result.data.updateTodo
+        setTodo(data)
+        setTmpName(null)
+        setTmpDescription(null)
+      })
+      .catch((err) => {
+        console.error(err)
+        toast.error('Failed to update todo')
+      })
+  }
+
   return (
     <>
+      <Link href={indexUrl}>
+        <IoIosHome />
+      </Link>
       <Table className='my-3'>
         <thead>
           <tr>
@@ -97,7 +133,7 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
                       onClick={() => {
                         const value = item.tmpValue
                         if (value == null) return
-                        execUpdateTodo(item.name, value, () => { item.setFn(null) })
+                        execUpdateTodoRecord(item.name, value, () => { item.setFn(null) })
                       }}
                       disabled={isLoading}
                     >
@@ -123,6 +159,14 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
           }
         </tbody>
       </Table>
+      <hr />
+      <Button
+        variant='primary'
+        onClick={execUpdateTodo}
+        disabled={isLoading || (tmpName == null && tmpDescription == null)}
+      >
+        Update All
+      </Button>
       <hr />
       <TodoDeleteComponent id={todo.id} indexUrl={indexUrl} />
     </>
