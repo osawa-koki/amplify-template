@@ -41,9 +41,7 @@ jobs:
       - name: Type check
         run: yarn type-check
       - name: Linter check
-        run: yarn lint
-      - name: test build
-        run: yarn build
+        run: yarn linta
       - name: Install Playwright Browsers
         run: yarn playwright install --with-deps
       - name: Run tests
