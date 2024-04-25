@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 import { type Dream } from '@/src/API'
 import { graphqlClient } from '@/app/layout'
 import { listDreams } from '@/src/graphql/queries'
+import DreamCreateComponent from './create'
 
 export default function DreamComponent (): React.JSX.Element {
   const [dreams, setDreams] = useState<Dream[] | null | Error>(null)
@@ -40,6 +41,8 @@ export default function DreamComponent (): React.JSX.Element {
   return (
     <>
       {JSON.stringify(dreams)}
+      <hr />
+      <DreamCreateComponent afterCreate={() => {}} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }
