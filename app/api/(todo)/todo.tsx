@@ -48,7 +48,7 @@ export default function TodoComponent (): React.JSX.Element {
     <>
       <h1>Todo List</h1>
       <Alert variant='info' className='my-3'>
-        This is a simple todo list. You can create and delete todos.
+        This is a simple todo list. You can create, update, and delete todos.
       </Alert>
       <div>
         <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
