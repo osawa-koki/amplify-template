@@ -67,7 +67,7 @@ export default function DreamIndexTable (props: Props): React.JSX.Element {
           {dreams.map((dream) => (
             <tr key={dream.id}>
               <td>
-                <Link href={`/api/show?dream-id=${dream.id}`}><IoOpenOutline /></Link>
+                <Link href={`/api/dream/show?dream-id=${dream.id}`}><IoOpenOutline /></Link>
               </td>
               <td>{dream.name}</td>
               <td>{dream.description}</td>

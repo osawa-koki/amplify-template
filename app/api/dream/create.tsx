@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 import { graphqlClient } from '@/app/layout'
 import { createDream } from '@/src/graphql/mutations'
+import dayjs from 'dayjs'
 
 interface Props {
   afterCreate: () => void
@@ -30,7 +31,7 @@ export default function DreamCreateComponent (props: Props): React.JSX.Element {
     const data = {
       name,
       description,
-      dueDate: dueDate?.toISOString()
+      dueDate: dayjs(dueDate).format('YYYY-MM-DD')
     }
     try {
       await graphqlClient.graphql({
