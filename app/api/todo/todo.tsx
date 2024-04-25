@@ -11,8 +11,8 @@ import { listTodos } from '@/src/graphql/queries'
 
 import { graphqlClient } from '@/app/layout'
 
-import TodoIndexComponent from './todo/indexTable'
-import TodoCreateComponent from './todo/create'
+import TodoIndexComponent from './indexTable'
+import TodoCreateComponent from './create'
 
 export default function TodoComponent (): React.JSX.Element {
   const [todos, setTodos] = useState<Todo[] | null | Error>(null)
