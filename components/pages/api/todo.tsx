@@ -7,11 +7,11 @@ import { IoReload } from 'react-icons/io5'
 import { FaTrashAlt } from 'react-icons/fa'
 import { toast } from 'react-toastify'
 
-import { listTodos } from '../../../src/graphql/queries'
+import { listTodos } from '@/src/graphql/queries'
 
-import { graphqlClient } from '../../../app/layout'
-import { type Todo } from '../../../src/API'
-import { createTodo, deleteTodo } from '../../../src/graphql/mutations'
+import { graphqlClient } from '@/app/layout'
+import { type Todo } from '@/src/API'
+import { createTodo, deleteTodo } from '@/src/graphql/mutations'
 
 export default function TodoComponent (): React.JSX.Element {
   const [todos, setTodos] = useState<Todo[] | null | Error>(null)
