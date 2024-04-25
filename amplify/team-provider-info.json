@@ -30,7 +30,9 @@
       "function": {
         "amplifytemplatehello": {
           "hogehoge": "foofoo",
-          "secretsPathAmplifyAppId": "dkaopbqedtjx3"
+          "secretsPathAmplifyAppId": "dkaopbqedtjx3",
+          "deploymentBucketName": "amplify-amplifytemplate-dev-212852-deployment",
+          "s3Key": "amplify-builds/amplifytemplatehello-797673456f7765635333-build.zip"
         }
       }
     }

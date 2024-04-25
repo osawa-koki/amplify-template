@@ -69,7 +69,23 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_amplifytemplatehello_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
     "AMPLIFY_function_amplifytemplatehello_hogehoge": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_s3Key": {
       "usedBy": [
         {
           "category": "function",
