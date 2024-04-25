@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -83,6 +84,15 @@ export const getChatRoom = /* GraphQL */ `query GetChatRoom($id: ID!) {
     id
     name
     messages {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        chatRoomMessagesId
+        owner
+        __typename
+      }
       nextToken
       __typename
     }
@@ -105,6 +115,10 @@ export const listChatRooms = /* GraphQL */ `query ListChatRooms(
     items {
       id
       name
+      messages {
+        nextToken
+        __typename
+      }
       createdAt
       updatedAt
       owner

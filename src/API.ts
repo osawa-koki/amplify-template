@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
@@ -453,6 +454,15 @@ export type CreateChatRoomMutation = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -473,6 +483,15 @@ export type UpdateChatRoomMutation = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -493,6 +512,15 @@ export type DeleteChatRoomMutation = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -643,6 +671,15 @@ export type GetChatRoomQuery = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -664,6 +701,10 @@ export type ListChatRoomsQuery = {
       __typename: "ChatRoom",
       id: string,
       name: string,
+      messages?:  {
+        __typename: "ModelMessageConnection",
+        nextToken?: string | null,
+      } | null,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -830,6 +871,15 @@ export type OnCreateChatRoomSubscription = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -850,6 +900,15 @@ export type OnUpdateChatRoomSubscription = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
@@ -870,6 +929,15 @@ export type OnDeleteChatRoomSubscription = {
     name: string,
     messages?:  {
       __typename: "ModelMessageConnection",
+      items:  Array< {
+        __typename: "Message",
+        id: string,
+        content: string,
+        createdAt: string,
+        updatedAt: string,
+        chatRoomMessagesId?: string | null,
+        owner?: string | null,
+      } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,

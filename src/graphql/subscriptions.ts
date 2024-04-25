@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -129,6 +130,15 @@ export const onCreateChatRoom = /* GraphQL */ `subscription OnCreateChatRoom(
     id
     name
     messages {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        chatRoomMessagesId
+        owner
+        __typename
+      }
       nextToken
       __typename
     }
@@ -150,6 +160,15 @@ export const onUpdateChatRoom = /* GraphQL */ `subscription OnUpdateChatRoom(
     id
     name
     messages {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        chatRoomMessagesId
+        owner
+        __typename
+      }
       nextToken
       __typename
     }
@@ -171,6 +190,15 @@ export const onDeleteChatRoom = /* GraphQL */ `subscription OnDeleteChatRoom(
     id
     name
     messages {
+      items {
+        id
+        content
+        createdAt
+        updatedAt
+        chatRoomMessagesId
+        owner
+        __typename
+      }
       nextToken
       __typename
     }
