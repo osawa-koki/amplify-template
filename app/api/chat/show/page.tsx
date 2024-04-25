@@ -64,7 +64,7 @@ export default function ChatRoomShow (): React.JSX.Element {
 
   return (
     <>
-      <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} />
+      <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} afterChange={fetchFn} />
     </>
   )
 }

@@ -20,10 +20,11 @@ const indexUrl = '/api/?selected=Chat'
 interface Props {
   chatRoom: ChatRoom
   setChatRoom: (chatRoom: ChatRoom) => void
+  afterChange: () => void
 }
 
 export default function ChatRoomShowComponent (props: Props): React.JSX.Element {
-  const { chatRoom, setChatRoom } = props
+  const { chatRoom, setChatRoom, afterChange } = props
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -176,7 +177,7 @@ export default function ChatRoomShowComponent (props: Props): React.JSX.Element 
       <ChatRoomDeleteComponent id={chatRoom.id} indexUrl={indexUrl} />
       <hr />
       <MessageIndexTable messages={chatRoom.messages?.items ?? null} />
-      <MessageCreateComponent chatRoomId={chatRoom.id} />
+      <MessageCreateComponent chatRoomId={chatRoom.id} afterCreate={afterChange} />
     </>
   )
 }
