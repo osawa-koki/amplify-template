@@ -16,3 +16,21 @@ type Dream @model @auth(rules: [
   dueDate: String
   done: Boolean
 }
+
+type ChatRoom @model @auth(rules: [
+  { allow: owner },
+  { allow: private, operations: [read] }
+]) {
+  id: ID!
+  name: String!
+  messages: [Message] @hasMany
+}
+
+type Message @model @auth(rules: [
+  { allow: owner },
+  { allow: private, operations: [read] }
+]) {
+  id: ID!
+  content: String!
+  chatRoom: ChatRoom @belongsTo
+}
