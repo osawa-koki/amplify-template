@@ -2,13 +2,13 @@
 
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-
-import ChatRoomShowComponent from './show'
-import { type ChatRoom } from '@/src/API'
+import { Alert, Spinner } from 'react-bootstrap'
 import { toast } from 'react-toastify'
+
+import { type ChatRoom } from '@/src/API'
 import { getChatRoom } from '@/src/graphql/queries'
 import { graphqlClient } from '@/app/layout'
-import { Alert, Spinner } from 'react-bootstrap'
+import ChatRoomShowComponent from './show'
 
 export default function ChatRoomShow (): React.JSX.Element {
   const searchParams = useSearchParams()
@@ -27,7 +27,7 @@ export default function ChatRoomShow (): React.JSX.Element {
       .then((result) => {
         const chatRoom = result.data.getChatRoom
         if (chatRoom == null) {
-          throw new Error('CHat Room not found')
+          throw new Error('Chat Room not found')
         }
         setChatRoom(chatRoom)
       })
@@ -64,7 +64,7 @@ export default function ChatRoomShow (): React.JSX.Element {
 
   return (
     <>
-      {JSON.stringify(chatRoom.messages?.items ?? 'hgoe')}
+      {JSON.stringify(chatRoom.messages)}
       <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} />
     </>
   )

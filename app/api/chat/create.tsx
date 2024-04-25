@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 import { graphqlClient } from '@/app/layout'
 import { createChatRoom } from '@/src/graphql/mutations'
-import { CreateChatRoomInput } from '@/src/API'
+import { type CreateChatRoomInput } from '@/src/API'
 
 interface Props {
   afterCreate: () => void
