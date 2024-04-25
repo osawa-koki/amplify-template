@@ -54,7 +54,6 @@ export default function ChatRoomIndexTable (props: Props): React.JSX.Element {
           <tr>
             <th></th>
             <th>name</th>
-            <th>message count</th>
             <th>yours?</th>
           </tr>
         </thead>
@@ -65,7 +64,6 @@ export default function ChatRoomIndexTable (props: Props): React.JSX.Element {
                 <Link href={`/api/chat/show?chat-room-id=${chatRoom.id}`}><IoOpenOutline /></Link>
               </td>
               <td>{chatRoom.name}</td>
-              <td>{chatRoom.messages?.items.length ?? 0}</td>
               <td>{chatRoom.owner === user.userId ? <FaCheck className='text-success' /> : <></>}</td>
             </tr>
           ))}
