@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { getUrl, remove } from 'aws-amplify/storage'
+import { type StorageAccessLevel } from '@aws-amplify/core'
 import { Table } from 'react-bootstrap'
 
 import { IoReloadSharp } from 'react-icons/io5'
@@ -17,10 +18,11 @@ interface Props {
   isLoading: boolean
   setIsLoading: (value: boolean) => void
   mutate: () => Promise<void>
+  storageAccessLevel: StorageAccessLevel
 }
 
 export default function ListfilesComponent (props: Props): React.JSX.Element {
-  const { files, isLoading, setIsLoading, mutate } = props
+  const { files, isLoading, setIsLoading, mutate, storageAccessLevel } = props
 
   return (
     <>
@@ -55,20 +57,25 @@ export default function ListfilesComponent (props: Props): React.JSX.Element {
                 <td>{file.size}</td>
                 <td>{file.lastModified != null ? dayjs(file.lastModified).format('YYYY-MM-DD HH:mm:ss') : 'undefined'}</td>
                 <td>
-                  {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-                  <FaDownload onClick={async () => {
-                    const getUrlResult = await getUrl({
+                  <FaDownload onClick={() => {
+                    getUrl({
                       key: file.key,
                       options: {
-                        accessLevel: 'private'
+                        accessLevel: storageAccessLevel
                       }
                     })
-                    const url = getUrlResult.url.href
-                    const a = document.createElement('a')
-                    a.href = url
-                    a.download = file.key
-                    a.click()
-                    a.remove()
+                      .then((getUrlResult) => {
+                        const url = getUrlResult.url.href
+                        const a = document.createElement('a')
+                        a.href = url
+                        a.download = file.key
+                        a.click()
+                        a.remove()
+                      })
+                      .catch((error) => {
+                        console.error(error)
+                        toast.error('Failed to download file.')
+                      })
                   }} role='button' />
                 </td>
                 <td>
@@ -78,7 +85,7 @@ export default function ListfilesComponent (props: Props): React.JSX.Element {
                       void remove({
                         key: file.key,
                         options: {
-                          accessLevel: 'private'
+                          accessLevel: storageAccessLevel
                         }
                       })
                       toast.success('File deleted.')

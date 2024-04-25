@@ -2,15 +2,17 @@
 
 import React, { useMemo, useState } from 'react'
 import { type UploadDataInput, uploadData } from 'aws-amplify/storage'
+import { type StorageAccessLevel } from '@aws-amplify/core'
 import { Button, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 interface Props {
   mutate: () => void
+  storageAccessLevel: StorageAccessLevel
 }
 
 export default function UploadComponent (props: Props): React.JSX.Element {
-  const { mutate } = props
+  const { mutate, storageAccessLevel } = props
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -19,7 +21,7 @@ export default function UploadComponent (props: Props): React.JSX.Element {
 
   const buttonIsDisabled = useMemo(() => {
     return fileName == null || file == null
-  }, [fileName, file])
+  }, [fileName, file, storageAccessLevel])
 
   const uploadFile = async (): Promise<void> => {
     if (file == null) return
@@ -28,13 +30,14 @@ export default function UploadComponent (props: Props): React.JSX.Element {
       key: fileName,
       data: file,
       options: {
-        accessLevel: 'private'
+        accessLevel: storageAccessLevel
       }
     }
     try {
       setIsLoading(true)
       const uploadDataOutput = uploadData(uploadDataInput)
-      await uploadDataOutput.result
+      const result = await uploadDataOutput.result
+      console.log(result)
       toast.success('Upload success.')
       setFileName('')
       setFile(null)
@@ -68,6 +71,7 @@ export default function UploadComponent (props: Props): React.JSX.Element {
         }} />
       </Form.Group>
       <Button variant='primary' onClick={() => { void uploadFile() }} className='mt-3' disabled={buttonIsDisabled || isLoading}>Upload</Button>
+      {isLoading && <p>Uploading...</p>}
     </>
   )
 }
