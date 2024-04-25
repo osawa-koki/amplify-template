@@ -1,4 +1,3 @@
-/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -192,14 +191,6 @@ export const onCreateMessage = /* GraphQL */ `subscription OnCreateMessage(
   onCreateMessage(filter: $filter, owner: $owner) {
     id
     content
-    chatRoom {
-      id
-      name
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
     createdAt
     updatedAt
     chatRoomMessagesId
@@ -218,14 +209,6 @@ export const onUpdateMessage = /* GraphQL */ `subscription OnUpdateMessage(
   onUpdateMessage(filter: $filter, owner: $owner) {
     id
     content
-    chatRoom {
-      id
-      name
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
     createdAt
     updatedAt
     chatRoomMessagesId
@@ -244,14 +227,6 @@ export const onDeleteMessage = /* GraphQL */ `subscription OnDeleteMessage(
   onDeleteMessage(filter: $filter, owner: $owner) {
     id
     content
-    chatRoom {
-      id
-      name
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
     createdAt
     updatedAt
     chatRoomMessagesId

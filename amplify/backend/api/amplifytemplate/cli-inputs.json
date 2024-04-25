@@ -4,14 +4,10 @@
     "apiName": "amplifytemplate",
     "serviceName": "AppSync",
     "defaultAuthType": {
-      "mode": "API_KEY",
-      "expirationTime": 7
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authamplifytemplateaf73f61d"
     },
-    "additionalAuthTypes": [
-      {
-        "mode": "AMAZON_COGNITO_USER_POOLS",
-        "cognitoUserPoolId": "authamplifytemplateaf73f61d"
-      }
-    ]
+    "additionalAuthTypes": [],
+    "conflictResolution": {}
   }
 }

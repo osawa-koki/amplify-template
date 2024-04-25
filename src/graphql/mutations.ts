@@ -1,4 +1,3 @@
-/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -192,14 +191,6 @@ export const createMessage = /* GraphQL */ `mutation CreateMessage(
   createMessage(input: $input, condition: $condition) {
     id
     content
-    chatRoom {
-      id
-      name
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
     createdAt
     updatedAt
     chatRoomMessagesId
@@ -218,14 +209,6 @@ export const updateMessage = /* GraphQL */ `mutation UpdateMessage(
   updateMessage(input: $input, condition: $condition) {
     id
     content
-    chatRoom {
-      id
-      name
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
     createdAt
     updatedAt
     chatRoomMessagesId
@@ -244,14 +227,6 @@ export const deleteMessage = /* GraphQL */ `mutation DeleteMessage(
   deleteMessage(input: $input, condition: $condition) {
     id
     content
-    chatRoom {
-      id
-      name
-      createdAt
-      updatedAt
-      owner
-      __typename
-    }
     createdAt
     updatedAt
     chatRoomMessagesId
