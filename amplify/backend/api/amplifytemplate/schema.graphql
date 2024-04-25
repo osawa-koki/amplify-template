@@ -5,3 +5,14 @@ type Todo @model @auth(rules: [{ allow: owner }]) {
   name: String!
   description: String
 }
+
+type Dream @model @auth(rules: [
+  { allow: owner },
+  { allow: public, operations: [read] }
+]) {
+  id: ID!
+  name: String!
+  description: String
+  dueDate: String
+  done: Boolean
+}
