@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import { Alert } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
 import { type Dream } from '@/src/API'
@@ -40,6 +41,12 @@ export default function DreamComponent (): React.JSX.Element {
 
   return (
     <>
+      <h1>Dream List</h1>
+      <Alert variant='info' className='my-3'>
+        This is a simple dream list. You can create, update, and delete todos.
+        <br />
+        Everyone can see your dreams, but only you can operate them.
+      </Alert>
       {JSON.stringify(dreams)}
       <hr />
       <DreamCreateComponent afterCreate={() => {}} isLoading={isLoading} setIsLoading={setIsLoading} />
