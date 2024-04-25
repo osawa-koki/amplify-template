@@ -4,6 +4,8 @@ import React from 'react'
 
 import { type Todo } from '@/src/API'
 import { Alert, Spinner, Table } from 'react-bootstrap'
+import Link from 'next/link'
+import { IoOpenOutline } from 'react-icons/io5'
 
 interface Props {
   todos: Todo[] | null | Error
@@ -37,6 +39,7 @@ export default function TodoIndexTable (props: Props): React.JSX.Element {
       <Table className='my-3'>
         <thead>
           <tr>
+            <th></th>
             <th>name</th>
             <th>description</th>
           </tr>
@@ -44,6 +47,9 @@ export default function TodoIndexTable (props: Props): React.JSX.Element {
         <tbody>
           {todos.map((todo) => (
             <tr key={todo.id}>
+              <td>
+                <Link href={`/api/show?todo-id=${todo.id}`}><IoOpenOutline /></Link>
+              </td>
               <td>{todo.name}</td>
               <td>{todo.description}</td>
             </tr>
