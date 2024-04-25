@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -39,3 +40,42 @@ export const listTodos = /* GraphQL */ `query ListTodos(
   }
 }
 ` as GeneratedQuery<APITypes.ListTodosQueryVariables, APITypes.ListTodosQuery>;
+export const getDream = /* GraphQL */ `query GetDream($id: ID!) {
+  getDream(id: $id) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.GetDreamQueryVariables, APITypes.GetDreamQuery>;
+export const listDreams = /* GraphQL */ `query ListDreams(
+  $filter: ModelDreamFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listDreams(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      dueDate
+      done
+      createdAt
+      updatedAt
+      owner
+      __typename
+    }
+    nextToken
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.ListDreamsQueryVariables,
+  APITypes.ListDreamsQuery
+>;

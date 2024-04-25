@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
@@ -75,6 +76,55 @@ export type DeleteTodoInput = {
   id: string,
 };
 
+export type CreateDreamInput = {
+  id?: string | null,
+  name: string,
+  description?: string | null,
+  dueDate?: string | null,
+  done?: boolean | null,
+};
+
+export type ModelDreamConditionInput = {
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  dueDate?: ModelStringInput | null,
+  done?: ModelBooleanInput | null,
+  and?: Array< ModelDreamConditionInput | null > | null,
+  or?: Array< ModelDreamConditionInput | null > | null,
+  not?: ModelDreamConditionInput | null,
+};
+
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
+export type Dream = {
+  __typename: "Dream",
+  id: string,
+  name: string,
+  description?: string | null,
+  dueDate?: string | null,
+  done?: boolean | null,
+  createdAt: string,
+  updatedAt: string,
+  owner?: string | null,
+};
+
+export type UpdateDreamInput = {
+  id: string,
+  name?: string | null,
+  description?: string | null,
+  dueDate?: string | null,
+  done?: boolean | null,
+};
+
+export type DeleteDreamInput = {
+  id: string,
+};
+
 export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -103,6 +153,23 @@ export type ModelIDInput = {
 export type ModelTodoConnection = {
   __typename: "ModelTodoConnection",
   items:  Array<Todo | null >,
+  nextToken?: string | null,
+};
+
+export type ModelDreamFilterInput = {
+  id?: ModelIDInput | null,
+  name?: ModelStringInput | null,
+  description?: ModelStringInput | null,
+  dueDate?: ModelStringInput | null,
+  done?: ModelBooleanInput | null,
+  and?: Array< ModelDreamFilterInput | null > | null,
+  or?: Array< ModelDreamFilterInput | null > | null,
+  not?: ModelDreamFilterInput | null,
+};
+
+export type ModelDreamConnection = {
+  __typename: "ModelDreamConnection",
+  items:  Array<Dream | null >,
   nextToken?: string | null,
 };
 
@@ -142,6 +209,21 @@ export type ModelSubscriptionStringInput = {
   beginsWith?: string | null,
   in?: Array< string | null > | null,
   notIn?: Array< string | null > | null,
+};
+
+export type ModelSubscriptionDreamFilterInput = {
+  id?: ModelSubscriptionIDInput | null,
+  name?: ModelSubscriptionStringInput | null,
+  description?: ModelSubscriptionStringInput | null,
+  dueDate?: ModelSubscriptionStringInput | null,
+  done?: ModelSubscriptionBooleanInput | null,
+  and?: Array< ModelSubscriptionDreamFilterInput | null > | null,
+  or?: Array< ModelSubscriptionDreamFilterInput | null > | null,
+};
+
+export type ModelSubscriptionBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
 };
 
 export type CreateTodoMutationVariables = {
@@ -195,6 +277,63 @@ export type DeleteTodoMutation = {
   } | null,
 };
 
+export type CreateDreamMutationVariables = {
+  input: CreateDreamInput,
+  condition?: ModelDreamConditionInput | null,
+};
+
+export type CreateDreamMutation = {
+  createDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type UpdateDreamMutationVariables = {
+  input: UpdateDreamInput,
+  condition?: ModelDreamConditionInput | null,
+};
+
+export type UpdateDreamMutation = {
+  updateDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type DeleteDreamMutationVariables = {
+  input: DeleteDreamInput,
+  condition?: ModelDreamConditionInput | null,
+};
+
+export type DeleteDreamMutation = {
+  deleteDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
 export type GetTodoQueryVariables = {
   id: string,
 };
@@ -225,6 +364,48 @@ export type ListTodosQuery = {
       id: string,
       name: string,
       description?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      owner?: string | null,
+    } | null >,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetDreamQueryVariables = {
+  id: string,
+};
+
+export type GetDreamQuery = {
+  getDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type ListDreamsQueryVariables = {
+  filter?: ModelDreamFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListDreamsQuery = {
+  listDreams?:  {
+    __typename: "ModelDreamConnection",
+    items:  Array< {
+      __typename: "Dream",
+      id: string,
+      name: string,
+      description?: string | null,
+      dueDate?: string | null,
+      done?: boolean | null,
       createdAt: string,
       updatedAt: string,
       owner?: string | null,
@@ -278,6 +459,63 @@ export type OnDeleteTodoSubscription = {
     id: string,
     name: string,
     description?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnCreateDreamSubscriptionVariables = {
+  filter?: ModelSubscriptionDreamFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnCreateDreamSubscription = {
+  onCreateDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnUpdateDreamSubscriptionVariables = {
+  filter?: ModelSubscriptionDreamFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnUpdateDreamSubscription = {
+  onUpdateDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
+    createdAt: string,
+    updatedAt: string,
+    owner?: string | null,
+  } | null,
+};
+
+export type OnDeleteDreamSubscriptionVariables = {
+  filter?: ModelSubscriptionDreamFilterInput | null,
+  owner?: string | null,
+};
+
+export type OnDeleteDreamSubscription = {
+  onDeleteDream?:  {
+    __typename: "Dream",
+    id: string,
+    name: string,
+    description?: string | null,
+    dueDate?: string | null,
+    done?: boolean | null,
     createdAt: string,
     updatedAt: string,
     owner?: string | null,

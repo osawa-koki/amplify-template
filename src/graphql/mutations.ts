@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -60,4 +61,64 @@ export const deleteTodo = /* GraphQL */ `mutation DeleteTodo(
 ` as GeneratedMutation<
   APITypes.DeleteTodoMutationVariables,
   APITypes.DeleteTodoMutation
+>;
+export const createDream = /* GraphQL */ `mutation CreateDream(
+  $input: CreateDreamInput!
+  $condition: ModelDreamConditionInput
+) {
+  createDream(input: $input, condition: $condition) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.CreateDreamMutationVariables,
+  APITypes.CreateDreamMutation
+>;
+export const updateDream = /* GraphQL */ `mutation UpdateDream(
+  $input: UpdateDreamInput!
+  $condition: ModelDreamConditionInput
+) {
+  updateDream(input: $input, condition: $condition) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.UpdateDreamMutationVariables,
+  APITypes.UpdateDreamMutation
+>;
+export const deleteDream = /* GraphQL */ `mutation DeleteDream(
+  $input: DeleteDreamInput!
+  $condition: ModelDreamConditionInput
+) {
+  deleteDream(input: $input, condition: $condition) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedMutation<
+  APITypes.DeleteDreamMutationVariables,
+  APITypes.DeleteDreamMutation
 >;

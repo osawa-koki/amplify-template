@@ -1,3 +1,4 @@
+/* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
@@ -60,4 +61,64 @@ export const onDeleteTodo = /* GraphQL */ `subscription OnDeleteTodo(
 ` as GeneratedSubscription<
   APITypes.OnDeleteTodoSubscriptionVariables,
   APITypes.OnDeleteTodoSubscription
+>;
+export const onCreateDream = /* GraphQL */ `subscription OnCreateDream(
+  $filter: ModelSubscriptionDreamFilterInput
+  $owner: String
+) {
+  onCreateDream(filter: $filter, owner: $owner) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnCreateDreamSubscriptionVariables,
+  APITypes.OnCreateDreamSubscription
+>;
+export const onUpdateDream = /* GraphQL */ `subscription OnUpdateDream(
+  $filter: ModelSubscriptionDreamFilterInput
+  $owner: String
+) {
+  onUpdateDream(filter: $filter, owner: $owner) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnUpdateDreamSubscriptionVariables,
+  APITypes.OnUpdateDreamSubscription
+>;
+export const onDeleteDream = /* GraphQL */ `subscription OnDeleteDream(
+  $filter: ModelSubscriptionDreamFilterInput
+  $owner: String
+) {
+  onDeleteDream(filter: $filter, owner: $owner) {
+    id
+    name
+    description
+    dueDate
+    done
+    createdAt
+    updatedAt
+    owner
+    __typename
+  }
+}
+` as GeneratedSubscription<
+  APITypes.OnDeleteDreamSubscriptionVariables,
+  APITypes.OnDeleteDreamSubscription
 >;
