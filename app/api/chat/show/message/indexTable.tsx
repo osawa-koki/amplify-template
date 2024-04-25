@@ -3,8 +3,6 @@
 import React from 'react'
 
 import { Alert, Spinner, Table } from 'react-bootstrap'
-import Link from 'next/link'
-import { IoOpenOutline } from 'react-icons/io5'
 import dayjs from 'dayjs'
 
 import { type Message } from '@/src/API'
@@ -53,7 +51,6 @@ export default function MessageIndexTable (props: Props): React.JSX.Element {
       <Table className='my-3'>
         <thead>
           <tr>
-            <th></th>
             <th>date</th>
             <th>message</th>
             <th>yours?</th>
@@ -62,9 +59,6 @@ export default function MessageIndexTable (props: Props): React.JSX.Element {
         <tbody>
           {messages.map((message: Message) => (
             <tr key={message.id}>
-              <td>
-                <Link href={`/api/chat/show?chat-room-id=${message.id}`}><IoOpenOutline /></Link>
-              </td>
               <td>{dayjs(message.createdAt).format('YYYY-MM-DD HH:mm:ss')}</td>
               <td>{message.content}</td>
               <td>{message.owner === user.userId ? <FaCheck className='text-success' /> : <></>}</td>
