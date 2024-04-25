@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { Alert, Form } from 'react-bootstrap'
 
-import TodoComponent from './todo/todo'
+import TodoComponent from './(todo)/todo'
 
 type SelectedComponent = '' | 'Todo'
 const allowedSelectedComponents: SelectedComponent[] = ['', 'Todo']
