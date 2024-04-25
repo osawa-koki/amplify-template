@@ -57,7 +57,7 @@ export default function TodoIndexTable (props: Props): React.JSX.Element {
           {todos.map((todo) => (
             <tr key={todo.id}>
               <td>
-                <Link href={`/api/show?todo-id=${todo.id}`}><IoOpenOutline /></Link>
+                <Link href={`/api/todo/show?todo-id=${todo.id}`}><IoOpenOutline /></Link>
               </td>
               <td>{todo.name}</td>
               <td>{todo.description}</td>

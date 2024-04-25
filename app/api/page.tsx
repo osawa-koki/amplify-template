@@ -5,8 +5,8 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 
 import { Alert, Form } from 'react-bootstrap'
 
-import TodoComponent from './(todo)/todo'
-import DreamComponent from './(dream)/dream'
+import TodoComponent from './todo/todo'
+import DreamComponent from './dream/dream'
 
 type SelectedComponent = '' | 'Todo' | 'Dream'
 const allowedSelectedComponents: SelectedComponent[] = ['', 'Todo', 'Dream']
