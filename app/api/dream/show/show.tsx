@@ -2,16 +2,19 @@
 
 import React, { useState } from 'react'
 
-import { Button, Form, Table } from 'react-bootstrap'
+import { Alert, Badge, Button, Form, Table } from 'react-bootstrap'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
 import { IoIosHome } from 'react-icons/io'
 import dayjs from 'dayjs'
+import { FaCheckDouble } from 'react-icons/fa'
+import { MdCancelPresentation } from 'react-icons/md'
 
 import { type Dream } from '@/src/API'
 import { updateDream } from '@/src/graphql/mutations'
 import { graphqlClient } from '@/app/layout'
 import DreamDeleteComponent from './delete'
+import { useAuthenticator } from '@aws-amplify/ui-react'
 
 const indexUrl = '/api/?selected=Dream'
 
@@ -23,13 +26,15 @@ interface Props {
 export default function DreamShowComponent (props: Props): React.JSX.Element {
   const { dream, setDream } = props
 
+  const { user } = useAuthenticator((context) => [context.user])
+
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const [tmpName, setTmpName] = useState<string | null>(null)
   const [tmpDescription, setTmpDescription] = useState<string | null>(null)
   const [tmpDueDate, setTmpDueDate] = useState<string | null>(null)
 
-  const execUpdateDreamRecord = (key: string, value: string, reset: () => void): void => {
+  const execUpdateDreamRecord = (key: string, value: string | boolean, reset: () => void): void => {
     setIsLoading(true)
     graphqlClient.graphql({
       query: updateDream,
@@ -39,7 +44,7 @@ export default function DreamShowComponent (props: Props): React.JSX.Element {
           [key]: value
         }
       },
-      authMode: 'userPool'
+      authMode: 'apiKey'
     })
       .then((result) => {
         toast.success('Updated dream')
@@ -95,6 +100,13 @@ export default function DreamShowComponent (props: Props): React.JSX.Element {
       <Link href={indexUrl}>
         <IoIosHome />
       </Link>
+      {dream.id !== user.userId && (
+        <Alert variant='warning' className='my-3'>
+          This is not your dream.
+          <br />
+          You can only view it.
+        </Alert>
+      )}
       <Table className='my-3'>
         <thead>
           <tr>
@@ -105,6 +117,24 @@ export default function DreamShowComponent (props: Props): React.JSX.Element {
           </tr>
         </thead>
         <tbody>
+          <tr>
+            <td>Status</td>
+            <td>
+              {(dream.done ?? false)
+                ? (
+                <Badge bg='success'>
+                  <FaCheckDouble /> Done
+                </Badge>
+                  )
+                : (
+                <Badge bg='warning'>
+                  <MdCancelPresentation /> Not yet
+                </Badge>
+                  )}
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
           {
             [
               { name: 'name', tmpValue: tmpName, value: dream.name, setFn: setTmpName, type: 'text' },
@@ -165,13 +195,24 @@ export default function DreamShowComponent (props: Props): React.JSX.Element {
         </tbody>
       </Table>
       <hr />
-      <Button
-        variant='primary'
-        onClick={execUpdateDream}
-        disabled={isLoading || (tmpName == null && tmpDescription == null)}
-      >
-        Update All
-      </Button>
+      <div className='d-flex align-items-center'>
+        <Button
+          variant='primary'
+          onClick={execUpdateDream}
+          className='me-2'
+          disabled={isLoading || (tmpName == null && tmpDescription == null)}
+        >
+          Update All
+        </Button>
+        <Button
+          variant='info'
+          onClick={() => { execUpdateDreamRecord('done', !(dream.done ?? false), () => {}) }}
+          size='sm'
+          disabled={isLoading}
+        >
+          {(dream.done ?? false) ? 'Undone' : 'Done'}
+        </Button>
+      </div>
       <hr />
       <DreamDeleteComponent id={dream.id} indexUrl={indexUrl} />
     </>

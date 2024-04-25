@@ -7,8 +7,8 @@ type Todo @model @auth(rules: [{ allow: owner }]) {
 }
 
 type Dream @model @auth(rules: [
-  { allow: owner },
-  { allow: public, operations: [read] }
+  { allow: private, operations: [read] },
+  { allow: owner }
 ]) {
   id: ID!
   name: String!
