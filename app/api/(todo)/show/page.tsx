@@ -19,7 +19,8 @@ export default function TodoShow (): React.JSX.Element {
 
   const fetchFn = (): void => {
     if (todoId == null) {
-      throw new Error('todo-id is required')
+      setTodo(new Error('Todo ID is not found'))
+      return
     }
     graphqlClient
       .graphql({ query: getTodo, variables: { id: todoId }, authMode: 'userPool' })

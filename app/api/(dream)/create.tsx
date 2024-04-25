@@ -22,14 +22,15 @@ export default function DreamCreateComponent (props: Props): React.JSX.Element {
 
   const createButtonDisabled = useMemo(() => {
     return name === '' || description === '' || dueDate == null
-  }, [name, description])
+  }, [name, description, dueDate])
 
   const createFn = async (): Promise<void> => {
     setIsLoading(true)
 
     const data = {
       name,
-      description
+      description,
+      dueDate: dueDate?.toISOString()
     }
     try {
       await graphqlClient.graphql({

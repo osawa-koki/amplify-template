@@ -52,9 +52,7 @@ export default function TodoComponent (): React.JSX.Element {
         <br />
         Only you can see and operate your todos.
       </Alert>
-      <div>
-        <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
-      </div>
+      <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       <TodoIndexComponent todos={todos} />
       <hr />
       <TodoCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />

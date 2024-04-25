@@ -8,6 +8,8 @@ import { type Dream } from '@/src/API'
 import { graphqlClient } from '@/app/layout'
 import { listDreams } from '@/src/graphql/queries'
 import DreamCreateComponent from './create'
+import DreamIndexTable from './indexTable'
+import { IoReload } from 'react-icons/io5'
 
 export default function DreamComponent (): React.JSX.Element {
   const [dreams, setDreams] = useState<Dream[] | null | Error>(null)
@@ -47,9 +49,10 @@ export default function DreamComponent (): React.JSX.Element {
         <br />
         Everyone can see your dreams, but only you can operate them.
       </Alert>
-      {JSON.stringify(dreams)}
+      <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
+      <DreamIndexTable dreams={dreams} />
       <hr />
-      <DreamCreateComponent afterCreate={() => {}} isLoading={isLoading} setIsLoading={setIsLoading} />
+      <DreamCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }
