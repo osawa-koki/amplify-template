@@ -2,10 +2,11 @@
 
 import React from 'react'
 
-import { type Todo } from '@/src/API'
 import { Alert, Spinner, Table } from 'react-bootstrap'
 import Link from 'next/link'
 import { IoOpenOutline } from 'react-icons/io5'
+
+import { type Todo } from '@/src/API'
 
 interface Props {
   todos: Todo[] | null | Error
