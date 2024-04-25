@@ -6,9 +6,10 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { Alert, Form } from 'react-bootstrap'
 
 import TodoComponent from './(todo)/todo'
+import DreamComponent from './(dream)/dream'
 
-type SelectedComponent = '' | 'Todo'
-const allowedSelectedComponents: SelectedComponent[] = ['', 'Todo']
+type SelectedComponent = '' | 'Todo' | 'Dream'
+const allowedSelectedComponents: SelectedComponent[] = ['', 'Todo', 'Dream']
 
 export default function Todos (): React.JSX.Element {
   // https://nextjs.org/docs/app/api-reference/functions/use-search-params
@@ -57,12 +58,15 @@ export default function Todos (): React.JSX.Element {
         className='my-3'
       >
         <option value=''>Select Component</option>
-        <option value='Todo'>Todo</option>
+        {allowedSelectedComponents.filter((component) => component !== '').map((component) => (
+          <option key={component} value={component}>{component}</option>
+        ))}
       </Form.Select>
       {selectedComponent === '' && (
         <Alert variant='info'>Please select a component</Alert>
       )}
       {selectedComponent === 'Todo' && <TodoComponent />}
+      {selectedComponent === 'Dream' && <DreamComponent />}
     </>
   )
 }
