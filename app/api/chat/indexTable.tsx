@@ -62,7 +62,7 @@ export default function ChatRoomIndexTable (props: Props): React.JSX.Element {
           {chatRooms.map((chatRoom) => (
             <tr key={chatRoom.id}>
               <td>
-                <Link href={`/api/todo/show?chat-room-id=${chatRoom.id}`}><IoOpenOutline /></Link>
+                <Link href={`/api/chat/show?chat-room-id=${chatRoom.id}`}><IoOpenOutline /></Link>
               </td>
               <td>{chatRoom.name}</td>
               <td>{chatRoom.messages?.items.length ?? 0}</td>

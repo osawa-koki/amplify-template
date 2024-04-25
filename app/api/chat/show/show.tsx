@@ -8,81 +8,77 @@ import { toast } from 'react-toastify'
 import { IoIosHome } from 'react-icons/io'
 import dayjs from 'dayjs'
 
-import { type Todo } from '@/src/API'
-import { updateTodo } from '@/src/graphql/mutations'
+import { type ChatRoom } from '@/src/API'
+import { updateChatRoom } from '@/src/graphql/mutations'
 import { graphqlClient } from '@/app/layout'
-import TodoDeleteComponent from './delete'
+import ChatRoomDeleteComponent from './delete'
 
-const indexUrl = '/api/?selected=Todo'
+const indexUrl = '/api/?selected=Chat'
 
 interface Props {
-  todo: Todo
-  setTodo: (todo: Todo) => void
+  chatRoom: ChatRoom
+  setChatRoom: (chatRoom: ChatRoom) => void
 }
 
-export default function TodoShowComponent (props: Props): React.JSX.Element {
-  const { todo, setTodo } = props
+export default function ChatRoomShowComponent (props: Props): React.JSX.Element {
+  const { chatRoom, setChatRoom } = props
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const [tmpName, setTmpName] = useState<string | null>(null)
-  const [tmpDescription, setTmpDescription] = useState<string | null>(null)
 
-  const execUpdateTodoRecord = (key: string, value: string, reset: () => void): void => {
+  const execUpdateChatRoomRecord = (key: string, value: string, reset: () => void): void => {
     setIsLoading(true)
     graphqlClient.graphql({
-      query: updateTodo,
+      query: updateChatRoom,
       variables: {
         input: {
-          id: todo.id,
+          id: chatRoom.id,
           [key]: value
         }
       },
       authMode: 'userPool'
     })
       .then((result) => {
-        toast.success('Updated todo')
-        const data = result.data.updateTodo
-        setTodo(data)
+        toast.success('Updated chat room')
+        const data = result.data.updateChatRoom
+        setChatRoom(data)
         reset()
       })
       .catch((err) => {
         console.error(err)
-        toast.error('Failed to update todo')
+        toast.error('Failed to update chat room')
       })
       .finally(() => {
         setIsLoading(false)
       })
   }
 
-  const execUpdateTodo = (): void => {
-    const newName = tmpName ?? todo.name
-    const newDescription = tmpDescription ?? todo.description
-    if (newName === todo.name && newDescription === todo.description) {
+  const execUpdateChatRoom = (): void => {
+    const newName = tmpName ?? chatRoom.name
+    if (newName === chatRoom.name) {
       toast.info('No changes')
       return
     }
     graphqlClient.graphql({
-      query: updateTodo,
+      query: updateChatRoom,
       variables: {
         input: {
-          id: todo.id,
-          name: newName,
-          description: newDescription
+          id: chatRoom.id,
+          name: newName
         }
       },
       authMode: 'userPool'
     })
       .then((result) => {
-        toast.success('Updated todo')
-        const data = result.data.updateTodo
-        setTodo(data)
+        toast.success('Updated chat room')
+        const data = result.data.updateChatRoom
+        setChatRoom(data)
         setTmpName(null)
-        setTmpDescription(null)
       })
       .catch((err) => {
         console.error(err)
-        toast.error('Failed to update todo')
+        toast.error('Failed to update chat room')
       })
   }
 
@@ -103,8 +99,7 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
         <tbody>
           {
             [
-              { name: 'name', tmpValue: tmpName, value: todo.name, setFn: setTmpName },
-              { name: 'description', tmpValue: tmpDescription, value: todo.description, setFn: setTmpDescription }
+              { name: 'name', tmpValue: tmpName, value: chatRoom.name, setFn: setTmpName }
             ].map((item) => (
               <tr key={item.name}>
                 <td>{item.name}</td>
@@ -133,7 +128,7 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
                       onClick={() => {
                         const value = item.tmpValue
                         if (value == null) return
-                        execUpdateTodoRecord(item.name, value, () => { item.setFn(null) })
+                        execUpdateChatRoomRecord(item.name, value, () => { item.setFn(null) })
                       }}
                       disabled={isLoading}
                     >
@@ -146,8 +141,8 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
           }
           {
             [
-              { name: 'createdAt', value: todo.createdAt },
-              { name: 'updatedAt', value: todo.updatedAt }
+              { name: 'createdAt', value: chatRoom.createdAt },
+              { name: 'updatedAt', value: chatRoom.updatedAt }
             ].map((item) => (
               <tr key={item.name}>
                 <td>{item.name}</td>
@@ -162,13 +157,13 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
       <hr />
       <Button
         variant='primary'
-        onClick={execUpdateTodo}
-        disabled={isLoading || (tmpName == null && tmpDescription == null)}
+        onClick={execUpdateChatRoom}
+        disabled={isLoading || (tmpName == null)}
       >
         Update All
       </Button>
       <hr />
-      <TodoDeleteComponent id={todo.id} indexUrl={indexUrl} />
+      <ChatRoomDeleteComponent id={chatRoom.id} indexUrl={indexUrl} />
     </>
   )
 }

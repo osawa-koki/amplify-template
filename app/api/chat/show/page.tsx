@@ -3,38 +3,38 @@
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 
-import TodoShowComponent from './show'
-import { type Todo } from '@/src/API'
+import ChatRoomShowComponent from './show'
+import { type ChatRoom } from '@/src/API'
 import { toast } from 'react-toastify'
-import { getTodo } from '@/src/graphql/queries'
+import { getChatRoom } from '@/src/graphql/queries'
 import { graphqlClient } from '@/app/layout'
 import { Alert, Spinner } from 'react-bootstrap'
 
-export default function TodoShow (): React.JSX.Element {
+export default function ChatRoomShow (): React.JSX.Element {
   const searchParams = useSearchParams()
 
-  const todoId = searchParams.get('todo-id')
+  const chatRoomId = searchParams.get('chat-room-id')
 
-  const [todo, setTodo] = useState<Todo | null | Error>(null)
+  const [chatRoom, setChatRoom] = useState<ChatRoom | null | Error>(null)
 
   const fetchFn = (): void => {
-    if (todoId == null) {
-      setTodo(new Error('Todo ID is not found'))
+    if (chatRoomId == null) {
+      setChatRoom(new Error('Chat Room ID is not found'))
       return
     }
     graphqlClient
-      .graphql({ query: getTodo, variables: { id: todoId }, authMode: 'userPool' })
+      .graphql({ query: getChatRoom, variables: { id: chatRoomId }, authMode: 'userPool' })
       .then((result) => {
-        const todo = result.data.getTodo
-        if (todo == null) {
-          throw new Error('Todo not found')
+        const chatRoom = result.data.getChatRoom
+        if (chatRoom == null) {
+          throw new Error('CHat Room not found')
         }
-        setTodo(todo)
+        setChatRoom(chatRoom)
       })
       .catch((err) => {
         console.error(err)
         toast.error('Failed to load todos')
-        setTodo(err)
+        setChatRoom(err)
       })
   }
 
@@ -42,7 +42,7 @@ export default function TodoShow (): React.JSX.Element {
     fetchFn()
   }, [])
 
-  if (todo == null) {
+  if (chatRoom == null) {
     return (
       <div className='d-flex justify-content-between my-3'>
         <Spinner animation='border' variant='primary' />
@@ -54,17 +54,17 @@ export default function TodoShow (): React.JSX.Element {
     )
   }
 
-  if (todo instanceof Error) {
+  if (chatRoom instanceof Error) {
     return (
       <Alert variant='danger' className='my-3'>
-        {todo.message}
+        {chatRoom.message}
       </Alert>
     )
   }
 
   return (
     <>
-      <TodoShowComponent todo={todo} setTodo={setTodo} />
+      <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} />
     </>
   )
 }
