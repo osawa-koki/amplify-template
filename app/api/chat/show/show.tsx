@@ -175,7 +175,7 @@ export default function ChatRoomShowComponent (props: Props): React.JSX.Element 
       <hr />
       <ChatRoomDeleteComponent id={chatRoom.id} indexUrl={indexUrl} />
       <hr />
-      <MessageIndexTable messages={chatRoom.messages?.items} />
+      <MessageIndexTable messages={chatRoom.messages?.items ?? null} />
       <MessageCreateComponent chatRoomId={chatRoom.id} />
     </>
   )

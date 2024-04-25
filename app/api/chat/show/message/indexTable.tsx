@@ -11,7 +11,7 @@ import { useAuthenticator } from '@aws-amplify/ui-react'
 import { FaCheck } from 'react-icons/fa'
 
 interface Props {
-  messages: Message[] | null | Error
+  messages: Array<Message | null> | null | Error
 }
 
 export default function MessageIndexTable (props: Props): React.JSX.Element {
@@ -58,7 +58,7 @@ export default function MessageIndexTable (props: Props): React.JSX.Element {
           </tr>
         </thead>
         <tbody>
-          {messages.map((message) => (
+          {messages.map((message: Message) => (
             <tr key={message.id}>
               <td>
                 <Link href={`/api/chat/show?chat-room-id=${message.id}`}><IoOpenOutline /></Link>
