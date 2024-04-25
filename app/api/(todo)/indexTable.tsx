@@ -35,6 +35,14 @@ export default function TodoIndexTable (props: Props): React.JSX.Element {
     )
   }
 
+  if (todos.length === 0) {
+    return (
+      <Alert variant='warning' className='my-3'>
+        No todos found
+      </Alert>
+    )
+  }
+
   return (
     <>
       <Table className='my-3'>

@@ -9,6 +9,9 @@ import dayjs from 'dayjs'
 import { type Todo } from '@/src/API'
 import { updateTodo } from '@/src/graphql/mutations'
 import { graphqlClient } from '@/app/layout'
+import TodoDeleteComponent from './delete'
+
+const indexUrl = '/api/?selected=Todo'
 
 interface Props {
   todo: Todo
@@ -120,6 +123,8 @@ export default function TodoShowComponent (props: Props): React.JSX.Element {
           }
         </tbody>
       </Table>
+      <hr />
+      <TodoDeleteComponent id={todo.id} indexUrl={indexUrl} />
     </>
   )
 }
