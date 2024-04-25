@@ -8,11 +8,11 @@ import { toast } from 'react-toastify'
 
 interface Props {
   chatRoomId: string
-  afterCreate: () => void
+  mutate: () => void
 }
 
 export default function MessageCreateComponent (props: Props): React.JSX.Element {
-  const { chatRoomId, afterCreate } = props
+  const { chatRoomId, mutate } = props
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -33,7 +33,7 @@ export default function MessageCreateComponent (props: Props): React.JSX.Element
       .then(() => {
         toast.success('Message sent')
         setMessage('')
-        afterCreate()
+        mutate()
       })
       .catch((err) => {
         console.error(err)

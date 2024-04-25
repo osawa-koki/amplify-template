@@ -55,7 +55,7 @@ export default function TodoComponent (): React.JSX.Element {
       <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       <TodoIndexComponent todos={todos} />
       <hr />
-      <TodoCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
+      <TodoCreateComponent mutate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }

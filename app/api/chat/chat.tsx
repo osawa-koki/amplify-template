@@ -57,7 +57,7 @@ export default function ChatRoomComponent (): React.JSX.Element {
       <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       <ChatRoomIndexComponent chatRooms={chatRooms} />
       <hr />
-      <ChatRoomCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
+      <ChatRoomCreateComponent mutate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }

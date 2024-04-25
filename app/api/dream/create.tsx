@@ -9,13 +9,13 @@ import { createDream } from '@/src/graphql/mutations'
 import dayjs from 'dayjs'
 
 interface Props {
-  afterCreate: () => void
+  mutate: () => void
   isLoading: boolean
   setIsLoading: (isLoading: boolean) => void
 }
 
 export default function DreamCreateComponent (props: Props): React.JSX.Element {
-  const { afterCreate, isLoading, setIsLoading } = props
+  const { mutate, isLoading, setIsLoading } = props
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -43,7 +43,7 @@ export default function DreamCreateComponent (props: Props): React.JSX.Element {
       setName('')
       setDescription('')
       setDueDate(null)
-      afterCreate()
+      mutate()
     } catch (err) {
       console.error('error creating dream:', err)
       toast.error('Failed to create dream')

@@ -15,11 +15,11 @@ import { graphqlClient } from '@/app/layout'
 
 interface Props {
   messages: Array<Message | null> | null | Error
-  afterChange: () => void
+  mutate: () => void
 }
 
 export default function MessageIndexTable (props: Props): React.JSX.Element {
-  const { messages, afterChange } = props
+  const { messages, mutate } = props
 
   const { user } = useAuthenticator((context) => [context.user])
 
@@ -35,7 +35,7 @@ export default function MessageIndexTable (props: Props): React.JSX.Element {
     })
       .then(() => {
         toast.success('Deleted message')
-        afterChange()
+        mutate()
       })
       .catch((err) => {
         console.error(err)
