@@ -8,13 +8,13 @@ import { graphqlClient } from '@/app/layout'
 import { createTodo } from '@/src/graphql/mutations'
 
 interface Props {
-  afterCreate: () => void
+  mutate: () => void
   isLoading: boolean
   setIsLoading: (isLoading: boolean) => void
 }
 
 export default function TodoCreateComponent (props: Props): React.JSX.Element {
-  const { afterCreate, isLoading, setIsLoading } = props
+  const { mutate, isLoading, setIsLoading } = props
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -39,7 +39,7 @@ export default function TodoCreateComponent (props: Props): React.JSX.Element {
       toast.success('Todo created')
       setName('')
       setDescription('')
-      afterCreate()
+      mutate()
     } catch (err) {
       console.error('error creating todo:', err)
       toast.error('Failed to create todo')
