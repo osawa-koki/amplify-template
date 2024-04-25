@@ -32,5 +32,4 @@ type Message @model @auth(rules: [
 ]) {
   id: ID!
   content: String!
-  chatRoom: ChatRoom @belongsTo
 }

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify'
 
 import { graphqlClient } from '@/app/layout'
 import { createChatRoom } from '@/src/graphql/mutations'
+import { CreateChatRoomInput } from '@/src/API'
 
 interface Props {
   afterCreate: () => void
@@ -25,7 +26,7 @@ export default function ChatRoomCreateComponent (props: Props): React.JSX.Elemen
   const createFn = async (): Promise<void> => {
     setIsLoading(true)
 
-    const data = {
+    const data: CreateChatRoomInput = {
       name
     }
     try {

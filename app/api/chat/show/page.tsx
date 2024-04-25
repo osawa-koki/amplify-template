@@ -33,7 +33,7 @@ export default function ChatRoomShow (): React.JSX.Element {
       })
       .catch((err) => {
         console.error(err)
-        toast.error('Failed to load todos')
+        toast.error('Failed to load chat rooms')
         setChatRoom(err)
       })
   }
@@ -64,6 +64,7 @@ export default function ChatRoomShow (): React.JSX.Element {
 
   return (
     <>
+      {JSON.stringify(chatRoom.messages?.items ?? 'hgoe')}
       <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} />
     </>
   )

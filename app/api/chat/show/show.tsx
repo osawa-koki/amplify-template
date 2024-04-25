@@ -12,6 +12,8 @@ import { type ChatRoom } from '@/src/API'
 import { updateChatRoom } from '@/src/graphql/mutations'
 import { graphqlClient } from '@/app/layout'
 import ChatRoomDeleteComponent from './delete'
+import MessageCreateComponent from './message/create'
+import MessageIndexTable from './message/indexTable'
 
 const indexUrl = '/api/?selected=Chat'
 
@@ -164,6 +166,9 @@ export default function ChatRoomShowComponent (props: Props): React.JSX.Element 
       </Button>
       <hr />
       <ChatRoomDeleteComponent id={chatRoom.id} indexUrl={indexUrl} />
+      <hr />
+      <MessageIndexTable messages={chatRoom.messages?.items} />
+      <MessageCreateComponent chatRoomId={chatRoom.id} />
     </>
   )
 }
