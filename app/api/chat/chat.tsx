@@ -23,12 +23,13 @@ export default function ChatRoomComponent (): React.JSX.Element {
     setIsLoading(true)
     graphqlClient.graphql({ query: listChatRooms, authMode: 'userPool' })
       .then((result) => {
-        setChatRooms(result.data.listChatRooms.items.sort((a, b) => {
+        const rooms = result.data.listChatRooms.items.sort((a, b) => {
           if (a.createdAt == null || b.createdAt == null) return 0
           if (a.createdAt < b.createdAt) return -1
           if (a.createdAt > b.createdAt) return 1
           return 0
-        }))
+        })
+        setChatRooms(rooms)
       })
       .catch((err) => {
         console.error(err)
