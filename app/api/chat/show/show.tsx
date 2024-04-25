@@ -44,7 +44,11 @@ export default function ChatRoomShowComponent (props: Props): React.JSX.Element 
       .then((result) => {
         toast.success('Updated chat room')
         const data = result.data.updateChatRoom
-        setChatRoom(data)
+        setChatRoom({
+          ...chatRoom,
+          ...data,
+          messages: chatRoom.messages
+        })
         reset()
       })
       .catch((err) => {
@@ -75,7 +79,11 @@ export default function ChatRoomShowComponent (props: Props): React.JSX.Element 
       .then((result) => {
         toast.success('Updated chat room')
         const data = result.data.updateChatRoom
-        setChatRoom(data)
+        setChatRoom({
+          ...chatRoom,
+          ...data,
+          messages: chatRoom.messages
+        })
         setTmpName(null)
       })
       .catch((err) => {
