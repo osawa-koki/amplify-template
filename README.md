@@ -2,6 +2,17 @@
 
 🏺🏺🏺 Amplify Frameworkを使用したサーバーレスアプリケーションのテンプレートです！  
 
+- Auth
+  - ![Auth](./fruits/auth.gif)
+- Api
+  - ![Api](./fruits/api-1.gif)
+  - ![Api](./fruits/api-2.gif)
+  - ![Api](./fruits/api-3.gif)
+- Storage
+  - ![Storage](./fruits/storage.gif)
+- Function
+  - ![Function](./fruits/function.gif)
+
 ## 準備方法
 
 ```shell
