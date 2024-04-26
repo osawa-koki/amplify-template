@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import setting from '../setting'
+import setting from '@/setting'
 
 export default function Home (): React.JSX.Element {
   return (

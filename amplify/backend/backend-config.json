@@ -1,4 +1,30 @@
 {
+  "api": {
+    "amplifytemplate": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "amplifytemplateaf73f61d"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authamplifytemplateaf73f61d"
+            }
+          }
+        }
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync"
+    }
+  },
   "auth": {
     "amplifytemplateaf73f61d": {
       "customAuth": false,
@@ -27,6 +53,14 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "amplifytemplatehello": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "hosting": {
     "amplifyhosting": {
       "providerPlugin": "awscloudformation",
@@ -35,6 +69,38 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_amplifytemplatehello_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_hogehoge": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {
@@ -50,6 +116,13 @@
           "resourceName": "amplifyhosting"
         }
       ]
+    }
+  },
+  "storage": {
+    "amplifytemplate": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
     }
   }
 }

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 import { type FetchUserAttributesOutput } from 'aws-amplify/auth'
 
-import Modal from '../../Modal'
+import Modal from '@/components/Modal'
 
 interface Props {
   modalIsOpen: boolean

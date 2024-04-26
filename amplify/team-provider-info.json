@@ -20,39 +20,58 @@
       },
       "auth": {
         "amplifytemplateaf73f61d": {}
+      },
+      "api": {
+        "amplifytemplate": {}
+      },
+      "storage": {
+        "amplifytemplate": {}
+      },
+      "function": {
+        "amplifytemplatehello": {
+          "hogehoge": "foofoo",
+          "secretsPathAmplifyAppId": "dkaopbqedtjx3",
+          "deploymentBucketName": "amplify-amplifytemplate-dev-212852-deployment",
+          "s3Key": "amplify-builds/amplifytemplatehello-392f75663146634a3236-build.zip"
+        }
       }
     }
   },
   "prod": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-amplifytemplate-prod-120528-authRole",
-      "UnauthRoleArn": "arn:aws:iam::938385028059:role/amplify-amplifytemplate-prod-120528-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::938385028059:role/amplify-amplifytemplate-prod-120528-authRole",
+      "AuthRoleName": "amplify-amplifytemplate-prod-113104-authRole",
+      "UnauthRoleArn": "arn:aws:iam::938385028059:role/amplify-amplifytemplate-prod-113104-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::938385028059:role/amplify-amplifytemplate-prod-113104-authRole",
       "Region": "ap-northeast-1",
-      "DeploymentBucketName": "amplify-amplifytemplate-prod-120528-deployment",
-      "UnauthRoleName": "amplify-amplifytemplate-prod-120528-unauthRole",
-      "StackName": "amplify-amplifytemplate-prod-120528",
-      "StackId": "arn:aws:cloudformation:ap-northeast-1:938385028059:stack/amplify-amplifytemplate-prod-120528/57abd3a0-011e-11ef-8a9a-0a40a38600d5",
+      "DeploymentBucketName": "amplify-amplifytemplate-prod-113104-deployment",
+      "UnauthRoleName": "amplify-amplifytemplate-prod-113104-unauthRole",
+      "StackName": "amplify-amplifytemplate-prod-113104",
+      "StackId": "arn:aws:cloudformation:ap-northeast-1:938385028059:stack/amplify-amplifytemplate-prod-113104/0876e000-0375-11ef-a1f9-067d4217e49b",
       "AmplifyAppId": "dkaopbqedtjx3"
     },
     "categories": {
+      "auth": {
+        "amplifytemplateaf73f61d": {}
+      },
+      "function": {
+        "amplifytemplatehello": {
+          "hogehoge": "foofoo",
+          "secretsPathAmplifyAppId": "dkaopbqedtjx3",
+          "deploymentBucketName": "amplify-amplifytemplate-prod-113104-deployment",
+          "s3Key": "amplify-builds/amplifytemplatehello-392f75663146634a3236-build.zip"
+        }
+      },
       "hosting": {
         "amplifyhosting": {
           "appId": "dkaopbqedtjx3",
           "type": "manual"
         }
       },
-      "auth": {
-        "amplifytemplateee51c86a": {},
-        "amplifytemplatefe992890": {},
-        "amplifytemplateb67d8f1b": {}
+      "api": {
+        "amplifytemplate": {}
       },
-      "function": {
-        "amplifytemplateee51c86aDefineAuthChallenge": {},
-        "amplifytemplateee51c86aCreateAuthChallenge": {},
-        "amplifytemplatefe992890PreSignup": {
-          "DOMAINALLOWLIST": "osawa.cloud"
-        }
+      "storage": {
+        "amplifytemplate": {}
       }
     }
   }
