@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 import { fn } from '@/src/graphql/queries'
 import FunctionResponseModal from './modal'
 

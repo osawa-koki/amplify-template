@@ -8,8 +8,7 @@ import { toast } from 'react-toastify'
 
 import { type Todo } from '@/src/API'
 import { listTodos } from '@/src/graphql/queries'
-
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 import TodoIndexComponent from './indexTable'
 import TodoCreateComponent from './create'

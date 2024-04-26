@@ -4,7 +4,7 @@ import React, { useMemo, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 import { createTodo } from '@/src/graphql/mutations'
 
 interface Props {

@@ -3,10 +3,10 @@
 import React, { useMemo, useState } from 'react'
 import { Button, Form, Table } from 'react-bootstrap'
 import { toast } from 'react-toastify'
-
-import { graphqlClient } from '@/app/layout'
-import { createDream } from '@/src/graphql/mutations'
 import dayjs from 'dayjs'
+
+import { graphqlClient } from '@/app/utils/graphqlClient'
+import { createDream } from '@/src/graphql/mutations'
 
 interface Props {
   mutate: () => void

@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import { type ChatRoom } from '@/src/API'
 import { listChatRooms } from '@/src/graphql/queries'
 
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 import ChatRoomIndexComponent from './indexTable'
 import ChatRoomCreateComponent from './create'
