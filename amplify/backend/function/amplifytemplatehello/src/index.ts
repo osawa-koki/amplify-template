@@ -20,18 +20,15 @@ Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }
   hogehoge
 Amplify Params - DO NOT EDIT */
 
-/**
- * @type {import('@types/aws-lambda').APIGatewayProxyHandler}
- */
-exports.handler = async (event) => {
+import {
+  APIGatewayProxyEvent,
+  APIGatewayProxyResult
+} from 'aws-lambda'
+
+exports.handler = async (event: APIGatewayProxyEvent): APIGatewayProxyResult => {
   console.log(`EVENT: ${JSON.stringify(event)}`)
   return {
     statusCode: 200,
-    //  Uncomment below to enable CORS requests
-    //  headers: {
-    //      "Access-Control-Allow-Origin": "*",
-    //      "Access-Control-Allow-Headers": "*"
-    //  },
     body: JSON.stringify({
       message: 'Hello World!',
       envVars: process.env
