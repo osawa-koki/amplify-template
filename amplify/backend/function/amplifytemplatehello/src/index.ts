@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 /*
 Use the following code to retrieve configured secrets from SSM:
 
