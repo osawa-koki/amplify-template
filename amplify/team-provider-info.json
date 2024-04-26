@@ -32,7 +32,7 @@
           "hogehoge": "foofoo",
           "secretsPathAmplifyAppId": "dkaopbqedtjx3",
           "deploymentBucketName": "amplify-amplifytemplate-dev-212852-deployment",
-          "s3Key": "amplify-builds/amplifytemplatehello-7836766d486f57576a6c-build.zip"
+          "s3Key": "amplify-builds/amplifytemplatehello-39654f6a575772635044-build.zip"
         }
       }
     }

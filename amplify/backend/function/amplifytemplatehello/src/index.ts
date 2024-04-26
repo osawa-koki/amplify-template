@@ -24,6 +24,17 @@ import {
   APIGatewayProxyEvent,
   APIGatewayProxyResult
 } from 'aws-lambda'
+import AWS from 'aws-sdk'
+
+const ssm = new AWS.SSM()
+
+const getSecret = async (secretName: string): Promise<string | null> => {
+  const { Parameter } = await ssm.getParameter({
+    Name: process.env[secretName],
+    WithDecryption: true
+  }).promise()
+  return Parameter?.Value ?? null
+}
 
 exports.handler = async (event: APIGatewayProxyEvent): APIGatewayProxyResult => {
   console.log(`EVENT: ${JSON.stringify(event)}`)
@@ -31,7 +42,8 @@ exports.handler = async (event: APIGatewayProxyEvent): APIGatewayProxyResult => 
     statusCode: 200,
     body: JSON.stringify({
       message: 'Hello World!',
-      envVars: process.env
+      envVars: process.env,
+      secret: await getSecret('piyopiyo')
     })
   }
 }
