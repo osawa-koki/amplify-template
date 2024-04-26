@@ -10,7 +10,8 @@ import dayjs from 'dayjs'
 
 import { type ChatRoom } from '@/src/API'
 import { updateChatRoom } from '@/src/graphql/mutations'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
+
 import ChatRoomDeleteComponent from './delete'
 import MessageCreateComponent from './message/create'
 import MessageIndexTable from './message/indexTable'
@@ -20,11 +21,11 @@ const indexUrl = '/api/?selected=Chat'
 interface Props {
   chatRoom: ChatRoom
   setChatRoom: (chatRoom: ChatRoom) => void
-  afterChange: () => void
+  mutate: () => void
 }
 
 export default function ChatRoomShowComponent (props: Props): React.JSX.Element {
-  const { chatRoom, setChatRoom, afterChange } = props
+  const { chatRoom, setChatRoom, mutate } = props
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -176,8 +177,8 @@ export default function ChatRoomShowComponent (props: Props): React.JSX.Element 
       <hr />
       <ChatRoomDeleteComponent id={chatRoom.id} indexUrl={indexUrl} />
       <hr />
-      <MessageIndexTable messages={chatRoom.messages?.items ?? null} afterChange={afterChange} />
-      <MessageCreateComponent chatRoomId={chatRoom.id} afterCreate={afterChange} />
+      <MessageIndexTable messages={chatRoom.messages?.items ?? null} mutate={mutate} />
+      <MessageCreateComponent chatRoomId={chatRoom.id} mutate={mutate} />
     </>
   )
 }

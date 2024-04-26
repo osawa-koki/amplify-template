@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from 'react'
 import { Alert } from 'react-bootstrap'
 import { toast } from 'react-toastify'
+import { IoReload } from 'react-icons/io5'
 
 import { type Dream } from '@/src/API'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 import { listDreams } from '@/src/graphql/queries'
+
 import DreamCreateComponent from './create'
 import DreamIndexTable from './indexTable'
-import { IoReload } from 'react-icons/io5'
 
 export default function DreamComponent (): React.JSX.Element {
   const [dreams, setDreams] = useState<Dream[] | null | Error>(null)
@@ -52,7 +53,7 @@ export default function DreamComponent (): React.JSX.Element {
       <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       <DreamIndexTable dreams={dreams} />
       <hr />
-      <DreamCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
+      <DreamCreateComponent mutate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }

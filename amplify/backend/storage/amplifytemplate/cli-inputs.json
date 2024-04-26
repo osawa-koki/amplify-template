@@ -1,0 +1,14 @@
+{
+  "resourceName": "amplifytemplate",
+  "policyUUID": "1685636b",
+  "bucketName": "amplify-template",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}

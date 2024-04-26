@@ -4,18 +4,18 @@ import React, { useMemo, useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { toast } from 'react-toastify'
 
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 import { createChatRoom } from '@/src/graphql/mutations'
 import { type CreateChatRoomInput } from '@/src/API'
 
 interface Props {
-  afterCreate: () => void
+  mutate: () => void
   isLoading: boolean
   setIsLoading: (isLoading: boolean) => void
 }
 
 export default function ChatRoomCreateComponent (props: Props): React.JSX.Element {
-  const { afterCreate, isLoading, setIsLoading } = props
+  const { mutate, isLoading, setIsLoading } = props
 
   const [name, setName] = useState('')
 
@@ -37,7 +37,7 @@ export default function ChatRoomCreateComponent (props: Props): React.JSX.Elemen
       })
       toast.success('Chat room created')
       setName('')
-      afterCreate()
+      mutate()
     } catch (err) {
       console.error('error creating chat room:', err)
       toast.error('Failed to create chat room')

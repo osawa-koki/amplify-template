@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 import { type ChatRoom } from '@/src/API'
 import { listChatRooms } from '@/src/graphql/queries'
 
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 import ChatRoomIndexComponent from './indexTable'
 import ChatRoomCreateComponent from './create'
@@ -57,7 +57,7 @@ export default function ChatRoomComponent (): React.JSX.Element {
       <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       <ChatRoomIndexComponent chatRooms={chatRooms} />
       <hr />
-      <ChatRoomCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
+      <ChatRoomCreateComponent mutate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }

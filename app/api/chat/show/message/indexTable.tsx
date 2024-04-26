@@ -11,15 +11,15 @@ import { FaCheck } from 'react-icons/fa'
 
 import { type Message } from '@/src/API'
 import { deleteMessage } from '@/src/graphql/mutations'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 interface Props {
   messages: Array<Message | null> | null | Error
-  afterChange: () => void
+  mutate: () => void
 }
 
 export default function MessageIndexTable (props: Props): React.JSX.Element {
-  const { messages, afterChange } = props
+  const { messages, mutate } = props
 
   const { user } = useAuthenticator((context) => [context.user])
 
@@ -35,7 +35,7 @@ export default function MessageIndexTable (props: Props): React.JSX.Element {
     })
       .then(() => {
         toast.success('Deleted message')
-        afterChange()
+        mutate()
       })
       .catch((err) => {
         console.error(err)

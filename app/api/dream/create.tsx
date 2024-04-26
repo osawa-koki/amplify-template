@@ -3,19 +3,19 @@
 import React, { useMemo, useState } from 'react'
 import { Button, Form, Table } from 'react-bootstrap'
 import { toast } from 'react-toastify'
-
-import { graphqlClient } from '@/app/layout'
-import { createDream } from '@/src/graphql/mutations'
 import dayjs from 'dayjs'
 
+import { graphqlClient } from '@/app/utils/graphqlClient'
+import { createDream } from '@/src/graphql/mutations'
+
 interface Props {
-  afterCreate: () => void
+  mutate: () => void
   isLoading: boolean
   setIsLoading: (isLoading: boolean) => void
 }
 
 export default function DreamCreateComponent (props: Props): React.JSX.Element {
-  const { afterCreate, isLoading, setIsLoading } = props
+  const { mutate, isLoading, setIsLoading } = props
 
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
@@ -43,7 +43,7 @@ export default function DreamCreateComponent (props: Props): React.JSX.Element {
       setName('')
       setDescription('')
       setDueDate(null)
-      afterCreate()
+      mutate()
     } catch (err) {
       console.error('error creating dream:', err)
       toast.error('Failed to create dream')

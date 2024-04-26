@@ -7,6 +7,14 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
+export const fn = /* GraphQL */ `query Fn {
+  fn {
+    statusCode
+    body
+    __typename
+  }
+}
+` as GeneratedQuery<APITypes.FnQueryVariables, APITypes.FnQuery>;
 export const getTodo = /* GraphQL */ `query GetTodo($id: ID!) {
   getTodo(id: $id) {
     id

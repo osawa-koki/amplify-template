@@ -7,7 +7,8 @@ import { toast } from 'react-toastify'
 
 import { type ChatRoom } from '@/src/API'
 import { getChatRoom } from '@/src/graphql/queries'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
+
 import ChatRoomShowComponent from './show'
 
 export default function ChatRoomShow (): React.JSX.Element {
@@ -64,7 +65,7 @@ export default function ChatRoomShow (): React.JSX.Element {
 
   return (
     <>
-      <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} afterChange={fetchFn} />
+      <ChatRoomShowComponent chatRoom={chatRoom} setChatRoom={setChatRoom} mutate={fetchFn} />
     </>
   )
 }

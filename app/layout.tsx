@@ -18,10 +18,8 @@ import { Authenticator } from '@aws-amplify/ui-react'
 import '@aws-amplify/ui-react/styles.css'
 
 import awsExports from '@/src/aws-exports'
-import { generateClient } from 'aws-amplify/api'
 
 Amplify.configure(awsExports)
-export const graphqlClient = generateClient()
 
 export default function RootLayout ({
   children

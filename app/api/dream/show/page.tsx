@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { Alert, Spinner } from 'react-bootstrap'
+import { toast } from 'react-toastify'
+
+import { type Dream } from '@/src/API'
+import { getDream } from '@/src/graphql/queries'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 import DreamShowComponent from './show'
-import { type Dream } from '@/src/API'
-import { toast } from 'react-toastify'
-import { getDream } from '@/src/graphql/queries'
-import { graphqlClient } from '@/app/layout'
-import { Alert, Spinner } from 'react-bootstrap'
 
 export default function DreamShow (): React.JSX.Element {
   const searchParams = useSearchParams()

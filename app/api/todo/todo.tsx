@@ -8,8 +8,7 @@ import { toast } from 'react-toastify'
 
 import { type Todo } from '@/src/API'
 import { listTodos } from '@/src/graphql/queries'
-
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 import TodoIndexComponent from './indexTable'
 import TodoCreateComponent from './create'
@@ -55,7 +54,7 @@ export default function TodoComponent (): React.JSX.Element {
       <IoReload onClick={fetchFn} role='button' className={`${isLoading ? 'bg-secondary' : ''}`} />
       <TodoIndexComponent todos={todos} />
       <hr />
-      <TodoCreateComponent afterCreate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
+      <TodoCreateComponent mutate={fetchFn} isLoading={isLoading} setIsLoading={setIsLoading} />
     </>
   )
 }

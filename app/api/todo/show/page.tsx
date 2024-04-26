@@ -2,13 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { Alert, Spinner } from 'react-bootstrap'
+import { toast } from 'react-toastify'
+
+import { type Todo } from '@/src/API'
+import { getTodo } from '@/src/graphql/queries'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 import TodoShowComponent from './show'
-import { type Todo } from '@/src/API'
-import { toast } from 'react-toastify'
-import { getTodo } from '@/src/graphql/queries'
-import { graphqlClient } from '@/app/layout'
-import { Alert, Spinner } from 'react-bootstrap'
 
 export default function TodoShow (): React.JSX.Element {
   const searchParams = useSearchParams()
