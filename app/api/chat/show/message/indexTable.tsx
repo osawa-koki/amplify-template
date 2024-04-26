@@ -11,7 +11,7 @@ import { FaCheck } from 'react-icons/fa'
 
 import { type Message } from '@/src/API'
 import { deleteMessage } from '@/src/graphql/mutations'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
 
 interface Props {
   messages: Array<Message | null> | null | Error

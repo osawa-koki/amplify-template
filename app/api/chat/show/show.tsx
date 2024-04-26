@@ -10,7 +10,8 @@ import dayjs from 'dayjs'
 
 import { type ChatRoom } from '@/src/API'
 import { updateChatRoom } from '@/src/graphql/mutations'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
+
 import ChatRoomDeleteComponent from './delete'
 import MessageCreateComponent from './message/create'
 import MessageIndexTable from './message/indexTable'

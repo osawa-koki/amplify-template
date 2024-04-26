@@ -53,6 +53,14 @@
       "service": "Cognito"
     }
   },
+  "function": {
+    "amplifytemplatehello": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "hosting": {
     "amplifyhosting": {
       "providerPlugin": "awscloudformation",
@@ -61,6 +69,38 @@
     }
   },
   "parameters": {
+    "AMPLIFY_function_amplifytemplatehello_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_hogehoge": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
+    "AMPLIFY_function_amplifytemplatehello_secretsPathAmplifyAppId": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "amplifytemplatehello"
+        }
+      ]
+    },
     "AMPLIFY_hosting_amplifyhosting_appId": {
       "usedBy": [
         {

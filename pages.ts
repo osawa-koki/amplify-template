@@ -24,6 +24,11 @@ const pages: Page[] = [
     emoji: '📚',
     path: '/storage/',
     name: 'Storage'
+  },
+  {
+    emoji: '📄',
+    path: '/function/',
+    name: 'Function'
   }
 ]
 

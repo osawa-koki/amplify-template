@@ -9,12 +9,13 @@ import { IoIosHome } from 'react-icons/io'
 import dayjs from 'dayjs'
 import { FaCheckDouble } from 'react-icons/fa'
 import { MdCancelPresentation } from 'react-icons/md'
+import { useAuthenticator } from '@aws-amplify/ui-react'
 
 import { type Dream } from '@/src/API'
 import { updateDream } from '@/src/graphql/mutations'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
+
 import DreamDeleteComponent from './delete'
-import { useAuthenticator } from '@aws-amplify/ui-react'
 
 const indexUrl = '/api/?selected=Dream'
 

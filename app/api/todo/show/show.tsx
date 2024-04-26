@@ -10,7 +10,8 @@ import dayjs from 'dayjs'
 
 import { type Todo } from '@/src/API'
 import { updateTodo } from '@/src/graphql/mutations'
-import { graphqlClient } from '@/app/layout'
+import { graphqlClient } from '@/app/utils/graphqlClient'
+
 import TodoDeleteComponent from './delete'
 
 const indexUrl = '/api/?selected=Todo'

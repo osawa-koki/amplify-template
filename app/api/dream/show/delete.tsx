@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
-
-import { graphqlClient } from '@/app/layout'
-import { deleteDream } from '@/src/graphql/mutations'
 import { toast } from 'react-toastify'
+
+import { graphqlClient } from '@/app/utils/graphqlClient'
+import { deleteDream } from '@/src/graphql/mutations'
 
 interface Props {
   id: string
