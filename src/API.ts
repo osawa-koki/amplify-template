@@ -211,6 +211,12 @@ export type DeleteMessageInput = {
   id: string,
 };
 
+export type FnResult = {
+  __typename: "FnResult",
+  statusCode: number,
+  body: string,
+};
+
 export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -576,6 +582,17 @@ export type DeleteMessageMutation = {
     updatedAt: string,
     chatRoomMessagesId?: string | null,
     owner?: string | null,
+  } | null,
+};
+
+export type FnQueryVariables = {
+};
+
+export type FnQuery = {
+  fn?:  {
+    __typename: "FnResult",
+    statusCode: number,
+    body: string,
   } | null,
 };
 

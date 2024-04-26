@@ -33,3 +33,14 @@ type Message @model @auth(rules: [
   id: ID!
   content: String!
 }
+
+# ##### Function #####
+
+type FnResult {
+  statusCode: Int!
+  body: String!
+}
+
+type Query {
+  fn: FnResult @function(name: "amplifytemplatehello-${env}")
+}
