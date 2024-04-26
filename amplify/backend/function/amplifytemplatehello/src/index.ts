@@ -1,19 +1,3 @@
-// @ts-nocheck
-
-/*
-Use the following code to retrieve configured secrets from SSM:
-
-const aws = require('aws-sdk')
-
-const { Parameters } = await (new aws.SSM())
-  .getParameters({
-    Names: ["piyopiyo"].map(secretName => process.env[secretName]),
-    WithDecryption: true,
-  })
-  .promise()
-
-Parameters will be of the form { Name: 'secretName', Value: 'secretValue', ... }[]
-*/
 /* Amplify Params - DO NOT EDIT
   ENV
   REGION
@@ -29,14 +13,16 @@ import AWS from 'aws-sdk'
 const ssm = new AWS.SSM()
 
 const getSecret = async (secretName: string): Promise<string | null> => {
+  const secretPath = process.env[secretName]
+  if (secretPath == null) return null
   const { Parameter } = await ssm.getParameter({
-    Name: process.env[secretName],
+    Name: secretPath,
     WithDecryption: true
   }).promise()
   return Parameter?.Value ?? null
 }
 
-exports.handler = async (event: APIGatewayProxyEvent): APIGatewayProxyResult => {
+exports.handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   console.log(`EVENT: ${JSON.stringify(event)}`)
   return {
     statusCode: 200,
